@@ -5,6 +5,8 @@ import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { signIn } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
 import Swal from 'sweetalert2';
+import GoogleLoginButton from '../GoogleLoginButton';
+import GithubLoginButton from '../GithubLoginButton';
 
 const inputStyle =
   'flex h-10 w-full rounded-lg border border-gray-200 border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50';
@@ -209,76 +211,14 @@ const LoginPage = () => {
               or login with
             </p>
 
-            <div className="grid grid-cols-3 gap-3 w-full">
-              <Button
-                variant="outline"
-                className="w-full h-10 rounded-full bg-[#1da1f2] text-white border-transparent hover:bg-[#0d9dd9] active:bg-[#0a8bc1] transition-all size-sm px-4 py-2 text-xs font-medium"
-              >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shrink-0 p-1">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#1da1f2]"
-                    aria-hidden="true"
-                  >
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                  </svg>
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full h-10 rounded-full bg-[#3b5998] text-white border-transparent hover:bg-[#334e88] active:bg-[#2d4374] transition-all size-sm px-4 py-2 text-xs font-medium"
-              >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shrink-0 p-1">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#3b5998]"
-                    aria-hidden="true"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                </span>
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full h-10 rounded-full bg-[#ea4335] text-white border-transparent hover:bg-[#d3382a] active:bg:#c03524 transition-all size-sm px-4 py-2 text-xs font-medium"
-              >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shrink-0 p-1">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#ea4335]"
-                    aria-hidden="true"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 6.5v11" />
-                    <path d="M6.5 12h11" />
-                  </svg>
-                </span>
-              </Button>
+            <div className="grid grid-cols-2 gap-3 w-full">
+              <GoogleLoginButton/>
+              <GithubLoginButton/>
+              
             </div>
 
             <p className="text-sm text-slate-500 text-center mt-4">
-              Not registered?{' '}
+              Not registered?
               <a
                 href="/signup"
                 className="text-emerald-600 font-medium hover:underline transition-colors"

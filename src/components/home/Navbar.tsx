@@ -1,17 +1,15 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   User,
-  Menu,
-  X,
   LogOut,
-  CalendarCheck,
-  MapPin,
-  ShieldCheck,
   House,
   PlusCircle,
+  MessageCircle,
+  CreditCard,
+  Settings,
+  CircleHelp,
 } from "lucide-react";
 
 import { useSession, signOut } from "@/lib/auth-client";
@@ -22,31 +20,19 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import { toast } from "sonner";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/", icon: House },
   {
-    label: "Add-Destinations",
-    href: "/add-destination",
+    label: "Upcoming Events",
+    href: "/upcoming-events",
     icon: PlusCircle,
   },
-  {
-    label: "Destinations",
-    href: "/all-destination",
-    icon: MapPin,
-  },
-  {
-    label: "My Bookings",
-    href: "/my-booking",
-    icon: CalendarCheck,
-  },
-  { label: "Admin", href: "/admin", icon: ShieldCheck },
 ];
 
 export default function Navbar() {
@@ -56,7 +42,6 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-
   // Logout functionality
   const handleSignOut = async () => {
     try {
@@ -64,6 +49,7 @@ export default function Navbar() {
         fetchOptions: {
           onSuccess: () => {
             toast.success(`${user?.name || "User"} signed out successfully!`);
+
             router.push("/login");
             router.refresh();
           },
@@ -74,171 +60,179 @@ export default function Navbar() {
     }
   };
 
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white">
-      <div className="relative mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:px-8 lg:px-10">
-        {/* Mobile hamburger button */}
-        {/* <button
-          type="button"
-          onClick={() => setIsMobileMenuOpen((previous) => !previous)}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-navigation"
-          className="flex items-center justify-center rounded-md p-2 text-[#171717] transition-colors hover:bg-gray-100 md:hidden"
-        >
-          {isMobileMenuOpen ? (
-            <X className="size-6" />
-          ) : (
-            <Menu className="size-6" />
-          )}
-        </button> */}
-
-        {/* Desktop navigation */}
-        <nav
-          aria-label="Main navigation"
-          className="hidden items-center gap-5 text-[13px] font-medium text-[#171717] md:flex lg:gap-7 lg:text-sm"
-        >
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href ||
-                  pathname.startsWith(`${link.href}/`);
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`relative py-1 transition-colors hover:text-[#15A1BF] ${
-                  isActive
-                    ? "text-[#15A1BF] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-[#15A1BF]"
-                    : ""
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Centered logo */}
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-10">
+        {/* Left Side: Logo */}
         <Link
           href="/"
-          aria-label="Wanderlast home"
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          aria-label="Sodila Events home"
+          className=""
         >
-            Sodila Events
-          {/* <Image
-            src="/Wanderlast.png"
-            alt="Wanderlast"
-            width={162}
-            height={24}
-            priority
-            className="h-5 w-auto sm:h-6 lg:h-7"
-          /> */}
+          <Image
+            src="/logo.png"
+            alt="FreddyMatch logo"
+            width={200}
+            height={60}
+            className="h-10 sm:h-12 w-auto"
+            loading="lazy"
+            decoding="async"
+          />
+          Sodila Events
         </Link>
 
-        {/* User section with independent loading */}
-        <div className="ml-auto flex items-center gap-2 sm:gap-4 lg:gap-5">
-          {isPending ? (
-            // Only user section shows loading
-            <div
-              className="size-9 animate-pulse rounded-full bg-gray-200"
-              aria-label="Loading user"
-            />
-          ) : user ? (
-            // Logged-in user
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="hidden max-w-32 truncate text-sm font-medium text-[#171717] sm:block">
-                {user.name}
-              </span>
+        {/* Right Side: Navigation + User Section */}
+        <div className="flex items-center gap-4 lg:gap-7">
+          {/* Navigation Links */}
+          <nav
+            aria-label="Main navigation"
+            className="flex items-center gap-4 text-[13px] font-medium text-[#171717] md:flex lg:gap-6 lg:text-sm"
+          >
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href ||
+                    pathname.startsWith(`${link.href}/`);
 
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  className="flex size-10 items-center justify-center rounded-full outline-none ring-offset-2 transition hover:ring-2 hover:ring-[#15A1BF]/40 focus-visible:ring-2 focus-visible:ring-[#15A1BF]"
-                  aria-label="Open user menu"
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative whitespace-nowrap py-1 transition-colors hover:text-[#15A1BF] ${
+                    isActive
+                      ? "text-[#15A1BF] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-[#15A1BF]"
+                      : ""
+                  }`}
                 >
-                  <Avatar className="size-9">
-                    <AvatarImage
-                      referrerPolicy="no-referrer"
-                      src={user.image || undefined}
-                      alt={user.name || "User"}
-                    />
-                    <AvatarFallback>
-                      {user.name?.charAt(0).toUpperCase() || "U"}
-                    </AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-                <DropdownMenuContent align="end" className="w-52">
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>
-                      <div className="flex flex-col gap-1">
-                        <span className="font-semibold">
-                          {user.name || "My Account"}
-                        </span>
-                        <span className="truncate text-xs font-normal text-muted-foreground">
-                          {user.email}
-                        </span>
-                      </div>
-                    </DropdownMenuLabel>
+          {/* User Section: Fixed Width */}
+          <div className="flex w-36 shrink-0 items-center justify-end gap-3 sm:w-44">
+            {isPending ? (
+              <div className="flex items-center gap-3">
+                <div className="size-9 animate-pulse rounded-full bg-gray-200" />
+                <div className="h-8 w-16 animate-pulse rounded-md bg-gray-200" />
+              </div>
+            ) : user ? (
+              /* Logged-in User */
+              <>
+                {/* Profile Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    className="flex shrink-0 items-center justify-center rounded-full outline-none border-2 border-gray-200 ring-offset-2 transition hover:ring-2 hover:ring-[#15A1BF]/40 focus-visible:ring-2 focus-visible:ring-[#15A1BF]"
+                    aria-label="Open user menu"
+                  >
+                    <Avatar className="size-9">
+                      <AvatarImage
+                        referrerPolicy="no-referrer"
+                        src={user.image || undefined}
+                        alt={user.name || "User"}
+                      />
+                      <AvatarFallback>
+                        {user.name?.charAt(0).toUpperCase() || "U"}
+                      </AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
 
-                    <DropdownMenuSeparator />
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-[280px] px-2 py-4 bg-white rounded-3xl border border-gray-200 shadow-2xl"
+                  >
+                    <DropdownMenuGroup>
+                      {/* Profile */}
+                      <DropdownMenuItem
+                        onClick={() => router.push("/profile")}
+                        className="cursor-pointer bg-slate-100 rounded-2xl px-4 py-3.5 text-slate-900 font-medium"
+                      >
+                        <User className="mr-3 size-5 text-slate-600" />
+                        Profile
+                      </DropdownMenuItem>
 
-                    <DropdownMenuItem
-                      onClick={() => router.push("/profile")}
-                      className="cursor-pointer"
-                    >
-                      <User className="mr-2 size-4" />
-                      Profile
-                    </DropdownMenuItem>
+                      {/* Community */}
+                      <DropdownMenuItem
+                        onClick={() => router.push("/create-event")}
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 transition-colors"
+                      >
+                        <MessageCircle className="mr-3 size-5 text-slate-500" />
+                        Create Events
+                      </DropdownMenuItem>
 
-                    <DropdownMenuItem
-                      onClick={() => router.push("/my-booking")}
-                      className="cursor-pointer"
-                    >
-                      <CalendarCheck className="mr-2 size-4" />
-                      My Bookings
-                    </DropdownMenuItem>
+                      {/* Subscription with PRO badge */}
+                      <DropdownMenuItem
+                        onClick={() => router.push("/manage-event")}
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 transition-colors flex items-center justify-between"
+                      >
+                        <div className="flex items-center gap-3">
+                          <CreditCard className="size-5 text-slate-500" />
+                          Manage Events
+                        </div>
+                      </DropdownMenuItem>
 
-                    <DropdownMenuSeparator />
+                      {/* Settings */}
+                      <DropdownMenuItem
+                        onClick={() => router.push("/joined-event")}
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 transition-colors"
+                      >
+                        <Settings className="mr-3 size-5 text-slate-500" />
+                        Joined Events
+                      </DropdownMenuItem>
 
-                    <DropdownMenuItem
-                      onClick={handleSignOut}
-                      className="cursor-pointer text-red-600 focus:text-red-600"
-                    >
-                      <LogOut className="mr-2 size-4" />
-                      Log out
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          ) : (
-            // Logged-out user
-            <div className="flex items-center gap-3 text-sm font-medium">
-              <Link
-                href="/login"
-                className="transition-colors hover:text-[#15A1BF]"
-              >
-                Login
-              </Link>
+                      {/* Help center */}
+                      <DropdownMenuItem
+                        onClick={() => router.push("/")}
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 transition-colors border-t border-slate-100 mt-2 pt-2"
+                      >
+                        <CircleHelp className="mr-3 size-5 text-slate-500" />
+                        Help center
+                      </DropdownMenuItem>
 
-              <Link
-                href="/signup"
-                className="rounded-md bg-[#15A1BF] px-3 py-2 text-white transition-colors hover:bg-[#1189a3]"
-              >
-                Sign Up
-              </Link>
-            </div>
-          )}
+                      {/* Sign out */}
+                      <DropdownMenuItem
+                        onClick={handleSignOut}
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-red-50 text-red-600 font-medium transition-colors"
+                      >
+                        <LogOut className="mr-3 size-5 text-red-600" />
+                        Sign out
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* Separate Logout Button */}
+                <button
+                  onClick={handleSignOut}
+                  className="whitespace-nowrap rounded-md bg-[#15A1BF] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              /* Logged-out User */
+              <div className="flex items-center justify-end gap-3">
+                <Link
+                  href="/login"
+                  className="whitespace-nowrap text-sm font-medium text-[#171717] transition-colors hover:text-[#15A1BF]"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  href="/signup"
+                  className="whitespace-nowrap rounded-md bg-[#15A1BF] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* Mobile Drawer + Overlay */}
-     
     </header>
   );
 }
