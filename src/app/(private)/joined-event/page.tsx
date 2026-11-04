@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
 
-import JoinedEventCard from "@/app/(private)/_components/joined-events/JoinedEventCard";
+import JoinedEventCard from "@/app/(private)/_components/JoinedEventCard";
 import { IJoinedEvent } from "@/app/types/type";
 import { Button } from "@/components/ui/button";
 

@@ -45,7 +45,14 @@ const EventCard = ({ event }: EventCardProps) => {
 
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <CalendarDays className="size-4 shrink-0 text-emerald-600" />
-          <span>{event?.eventDate}</span>
+          <span>
+            {" "}
+            {new Date(event.eventDate).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })}
+          </span>
         </div>
       </CardContent>
 

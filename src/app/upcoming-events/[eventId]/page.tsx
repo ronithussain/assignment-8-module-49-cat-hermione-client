@@ -34,8 +34,8 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
           {/* Thumbnail */}
           <div className="relative h-64 overflow-hidden">
             <Image
-              src={event.thumbnail}
-              alt={event.title}
+              src={event?.thumbnail}
+              alt={event?.title}
               width={400}
               height={400}
               className="w-full h-full object-cover"
@@ -95,7 +95,14 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
                     <line x1="3" y1="10" x2="21" y2="10" />
                   </svg>
                 </span>
-                <span>{event.eventDate}</span>
+                <span>
+                  {" "}
+                  {new Date(event.eventDate).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </span>
               </div>
             </div>
 
@@ -116,8 +123,8 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
                 <Image
                   width={50}
                   height={50}
-                  src={event.creatorImage}
-                  alt={event.creatorName}
+                  src={event?.creatorImage}
+                  alt={event?.creatorName}
                   className="w-10 h-10 rounded-full"
                 />
                 <div>
@@ -130,7 +137,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
                 </div>
               </div>
             </div>
-        <JoinEventButton event={event}/>
+            <JoinEventButton event={event} />
           </div>
         </article>
       </div>
