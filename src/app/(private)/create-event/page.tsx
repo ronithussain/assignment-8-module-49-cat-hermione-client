@@ -10,11 +10,10 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-
 const CreateEventForm = () => {
   const [loading, setLoading] = useState(false);
   const dateInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     if (dateInputRef.current) {
@@ -28,7 +27,10 @@ const CreateEventForm = () => {
 
   const handleCreateEvent = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    if (!user?.email) {
+      toast.error("Please login first.");
+      return;
+    }
     const formData = new FormData(e.currentTarget);
 
     const eventData = Object.fromEntries(formData.entries());
@@ -64,10 +66,9 @@ const CreateEventForm = () => {
       if (!res.ok) {
         throw new Error(afterSubmit.message || "Failed to create event");
       }
-    
-        toast.success("Event created successfully!");
-        router.push('/upcoming-events')
-      
+
+      toast.success("Event created successfully!");
+      router.push("/upcoming-events");
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong!");
@@ -99,6 +100,8 @@ const CreateEventForm = () => {
               id="title"
               name="title"
               type="text"
+              minLength={5}
+              maxLength={100}
               placeholder="Winter Clothes Distribution"
               required
               className="bg-slate-50 border-border"
@@ -112,6 +115,8 @@ const CreateEventForm = () => {
               id="location"
               name="location"
               type="text"
+              minLength={3}
+              maxLength={150}
               placeholder="Mirpur, Dhaka"
               required
               className="bg-slate-50 border-border"
@@ -174,6 +179,8 @@ const CreateEventForm = () => {
             id="description"
             name="description"
             placeholder="Describe your event..."
+            minLength={20}
+            maxLength={1000}
             required
             rows={5}
             className="bg-slate-50 border-border"

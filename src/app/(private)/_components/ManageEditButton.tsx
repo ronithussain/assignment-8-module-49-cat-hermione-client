@@ -242,12 +242,12 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                   </Label>
 
                   <Input
+                    ref={dateInputRef}
                     id="eventDate"
                     name="eventDate"
                     type="date"
                     defaultValue={event?.eventDate?.slice(0, 10)}
                     required
-                    className="h-11 rounded-lg border-slate-200 bg-slate-50/50 focus-visible:bg-white"
                   />
                 </div>
               </div>
@@ -288,6 +288,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
 
               <Button
                 type="submit"
+                disabled={loading}
                 className="h-11 rounded-lg bg-red-600 px-6 font-semibold text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-md"
               >
                 <Edit className="mr-2 size-4" />
