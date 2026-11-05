@@ -45,7 +45,7 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
   const createdDate = formatDateTime(event.createAt);
 
   return (
-    <article className="group overflow-hidden rounded-2xl bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-2xl bg-card p-3 shadow-sm border border-border dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
       {/* Thumbnail */}
       <div className="relative h-56 overflow-hidden rounded-xl">
@@ -59,13 +59,13 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
         />
 
         {/* Category */}
-        <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm backdrop-blur">
+        <span className="absolute left-3 top-3 rounded-full bg-white/90 dark:bg-gray-800/90 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400 shadow-sm backdrop-blur">
           {event.eventType}
         </span>
 
         {/* Past Badge */}
         {isPast && (
-          <span className="absolute left-3 top-11 rounded-full bg-gray-800/90 px-3 py-1 text-xs font-semibold text-white">
+          <span className="absolute left-3 top-11 rounded-full bg-gray-800/90 dark:bg-gray-600/90 px-3 py-1 text-xs font-semibold text-white">
             Past Event
           </span>
         )}
@@ -100,19 +100,19 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
       {/* Content */}
       <div className="space-y-3 px-2 pb-2 pt-4">
 
-        <h2 className="line-clamp-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-emerald-700">
+        <h2 className="line-clamp-1 text-lg font-bold text-slate-900 dark:text-white transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
           {event.title}
         </h2>
 
         {/* Location */}
-        <div className="flex items-center gap-1.5 text-sm text-gray-500">
-          <MapPin className="size-4 shrink-0 text-emerald-600" />
+        <div className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-gray-400">
+          <MapPin className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
           <span className="line-clamp-1">{event.location}</span>
         </div>
 
         {/* Event Date */}
-        <div className="flex items-center gap-1.5 text-sm text-gray-500">
-          <CalendarDays className="size-4 shrink-0 text-emerald-600" />
+        <div className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-gray-400">
+          <CalendarDays className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
 
           <span>
             Event Date: {eventDate.date}
@@ -120,8 +120,8 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
         </div>
 
         {/* Event Creation Date */}
-        <div className="flex items-center gap-1.5 text-sm text-gray-500">
-          <Clock className="size-4 shrink-0 text-blue-500" />
+        <div className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-gray-400">
+          <Clock className="size-4 shrink-0 text-blue-500 dark:text-blue-400" />
 
           <span>
             Created: {createdDate.date} at {createdDate.time}
@@ -129,19 +129,19 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
         </div>
 
         {/* Description */}
-        <p className="line-clamp-2 min-h-10 text-sm leading-6 text-gray-500">
+        <p className="line-clamp-2 min-h-10 text-sm leading-6 text-slate-500 dark:text-gray-400">
           {event.description}
         </p>
       </div>
 
       {/* Footer */}
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 px-2 pt-4 pb-2">
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-border dark:border-gray-700 px-2 pt-4 pb-2">
 
         <span
           className={`rounded-full px-3 py-1 text-xs font-semibold ${
             isPast
-              ? "bg-gray-100 text-gray-500"
-              : "bg-emerald-50 text-emerald-600"
+              ? "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+              : "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400"
           }`}
         >
           {isPast ? "Completed" : "Upcoming"}

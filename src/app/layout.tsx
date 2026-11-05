@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/home/Navbar";
+import Navbar from "@/components/shared/Navbar";
 import { Toaster } from "sonner";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/shared/Footer";
 import { Suspense } from "react";
+import { Providers } from "@/components/Providers";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -19,29 +20,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <Suspense fallback={<div className="h-16" />}>
-          <Navbar />
-        </Suspense>
-        <main>{children}</main>
-        <Footer />
-        <Toaster
-          position="top-right"
-          theme="light"
-          richColors
-          closeButton
-          duration={4000}
-          visibleToasts={3}
-          expand={false}
-          gap={12}
-          offset={24}
-          mobileOffset={16}
-        />
-      </body>
+    <html lang="en" suppressHydrationWarning className={`${poppins.variable} h-full antialiased`}>
+        <body className="min-h-full flex flex-col">
+      <Providers>
+          <Suspense fallback={<div className="h-16" />}>
+            <Navbar />
+          </Suspense>
+          <main>{children}</main>
+          <Footer />
+          <Toaster
+            position="top-right"
+            theme="light"
+            richColors
+            closeButton
+            duration={4000}
+            visibleToasts={3}
+            expand={false}
+            gap={12}
+            offset={24}
+            mobileOffset={16}
+          />
+      </Providers>
+        </body>
     </html>
   );
 }

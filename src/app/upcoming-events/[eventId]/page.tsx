@@ -21,16 +21,16 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
   const event: IEvents = await res.json();
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]">
+    <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <Link
           href="/upcoming-events"
-          className="mb-6 inline-flex items-center text-sm font-medium text-emerald-600 hover:text-emerald-500"
+          className="mb-6 inline-flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300"
         >
           ← Back to events
         </Link>
 
-        <article className="rounded-2xl border border-gray-200 bg-white p-0 shadow-sm overflow-hidden">
+        <article className="rounded-2xl border border-border dark:border-gray-700 bg-card p-0 shadow-sm overflow-hidden">
           {/* Thumbnail */}
           <div className="relative h-64 overflow-hidden">
             <Image
@@ -58,7 +58,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="text-emerald-600">
+                <span className="text-emerald-600 dark:text-emerald-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -77,7 +77,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
                 <span>{event.location}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="text-emerald-600">
+                <span className="text-emerald-600 dark:text-emerald-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -106,7 +106,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
               </div>
             </div>
 
-            <div className="border-t border-gray-100 pt-6">
+            <div className="border-t border-border dark:border-gray-700 pt-6">
               <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Description
               </h2>
@@ -115,7 +115,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
               </p>
             </div>
 
-            <div className="border-t border-gray-100 pt-6">
+            <div className="border-t border-border dark:border-gray-700 pt-6">
               <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Organizer
               </h2>

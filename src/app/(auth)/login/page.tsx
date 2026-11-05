@@ -9,7 +9,7 @@ import GoogleLoginButton from '../GoogleLoginButton';
 import GithubLoginButton from '../GithubLoginButton';
 
 const inputStyle =
-  'flex h-10 w-full rounded-lg border border-gray-200 border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50';
+  'flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50';
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -63,10 +63,10 @@ const LoginPage = () => {
   };
   return (
     <section
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 px-4 py-8"
+      className="min-h-screen bg-gradient-to-br from-emerald-50 via-emerald-100 to-amber-50 dark:from-emerald-900/20 dark:via-gray-900 dark:to-amber-900/20 flex items-center justify-center  px-4 py-8"
     >
       <div
-        className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-[0.7fr_1.6fr_0.7fr] gap-4 md:gap-6 rounded-[2rem] shadow-2xl border border-white/30 overflow-hidden bg-white relative"
+        className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-[0.7fr_1.6fr_0.7fr] gap-4 md:gap-6 rounded-[2rem] shadow-2xl border border-white/30 dark:border-gray-700/50 overflow-hidden bg-card relative"
       >
 
         {/* Left: undraw tree illustration (tablet/desktop only) */}
@@ -126,10 +126,10 @@ const LoginPage = () => {
 
         {/* Center: login form */}
         <div className="p-8 md:p-14 flex flex-col justify-center items-center space-y-6 w-full">
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             Login into account
           </h1>
-          <p className="text-sm text-slate-500 text-center">
+          <p className="text-sm text-slate-500 dark:text-gray-400 text-center">
             Use your credentials to access your account.
           </p>
 
@@ -139,8 +139,8 @@ const LoginPage = () => {
             noValidate
           >
             <div className="space-y-2 relative">
-              <label className="block text-sm font-medium text-slate-700 flex items-center gap-2">
-                <Mail className="size-4 text-slate-400" aria-hidden="true" />
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 flex items-center gap-2">
+                <Mail className="size-4 text-slate-400 dark:text-gray-500" aria-hidden="true" />
                 Email address
               </label>
               <input
@@ -154,8 +154,8 @@ const LoginPage = () => {
             </div>
 
             <div className="space-y-2 relative">
-              <label className="block text-sm font-medium text-slate-700 flex items-center gap-2">
-                <Lock className="size-4 text-slate-400" aria-hidden="true" />
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 flex items-center gap-2">
+                <Lock className="size-4 text-slate-400 dark:text-gray-500" aria-hidden="true" />
                 Password
               </label>
               <div className="relative">
@@ -174,16 +174,16 @@ const LoginPage = () => {
                   className="absolute inset-y-0 right-2 flex items-center"
                 >
                   {passwordVisible ? (
-                    <EyeOff className="size-4 text-slate-400 hover:text-emerald-600" />
+                    <EyeOff className="size-4 text-slate-400 dark:text-gray-500 hover:text-emerald-600 dark:hover:text-emerald-400" />
                   ) : (
-                    <Eye className="size-4 text-slate-400 hover:text-emerald-600" />
+                    <Eye className="size-4 text-slate-400 dark:text-gray-500 hover:text-emerald-600 dark:hover:text-emerald-400" />
                   )}
                 </button>
               </div>
             </div>
 
             <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 cursor-pointer select-none text-slate-600">
+              <label className="flex items-center gap-2 cursor-pointer select-none text-slate-600 dark:text-gray-300">
                 <input
                   type="checkbox"
                   checked={rememberMe}
@@ -194,7 +194,7 @@ const LoginPage = () => {
               </label>
               <a
                 href="#"
-                className="text-emerald-600 text-xs font-medium hover:underline transition-colors"
+                className="text-emerald-600 dark:text-emerald-400 text-xs font-medium hover:underline transition-colors"
               >
                 Last password?
               </a>
@@ -207,7 +207,7 @@ const LoginPage = () => {
               Sign In
             </Button>
 
-            <p className="text-xs text-slate-500 text-center">
+            <p className="text-xs text-slate-500 dark:text-gray-400 text-center">
               or login with
             </p>
 
@@ -217,11 +217,11 @@ const LoginPage = () => {
               
             </div>
 
-            <p className="text-sm text-slate-500 text-center mt-4">
+            <p className="text-sm text-slate-500 dark:text-gray-400 text-center mt-4">
               Not registered?
               <a
                 href="/signup"
-                className="text-emerald-600 font-medium hover:underline transition-colors"
+                className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline transition-colors"
               >
                 Create account
               </a>

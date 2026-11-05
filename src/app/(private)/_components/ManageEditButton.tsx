@@ -108,7 +108,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
             <Button
               size="sm"
               variant="outline"
-              className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 transition-all duration-200"
+              className="border-red-200 dark:border-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-700 dark:hover:text-red-300 transition-all duration-200"
             >
               <Edit className="mr-1 size-4" />
               Edit
@@ -116,20 +116,20 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
           }
         />
 
-        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto border border-slate-200 bg-white p-0 shadow-2xl rounded-2xl">
+        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto border border-border dark:border-gray-700 bg-card p-0 shadow-2xl rounded-2xl">
           {/* Header */}
-          <DialogHeader className="border-b border-slate-100 bg-slate-50/80 px-6 py-5 sm:px-8">
+          <DialogHeader className="border-b border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-5 sm:px-8">
             <div className="flex items-center gap-3">
-              <div className="flex size-11 items-center justify-center rounded-xl bg-red-50 text-red-600">
+              <div className="flex size-11 items-center justify-center rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
                 <Edit className="size-5" />
               </div>
 
               <div className="space-y-1">
-                <DialogTitle className="text-xl font-bold tracking-tight text-slate-900">
+                <DialogTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                   Edit Event
                 </DialogTitle>
 
-                <DialogDescription className="text-sm text-slate-500">
+                <DialogDescription className="text-sm text-slate-500 dark:text-gray-400">
                   Update your event information and keep everything up to date.
                 </DialogDescription>
               </div>
@@ -147,7 +147,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="sm:col-span-2 space-y-2">
                   <Label
                     htmlFor="title"
-                    className="text-sm font-semibold text-slate-700"
+                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                   >
                     Event Title
                   </Label>
@@ -159,7 +159,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.title}
                     placeholder="Winter Clothes Distribution"
                     required
-                    className="h-11 rounded-lg border-slate-200 bg-slate-50/50 transition-all focus-visible:bg-white focus-visible:ring-red-500/20"
+                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 transition-all focus-visible:bg-background focus-visible:ring-red-500/20"
                   />
                 </div>
 
@@ -167,7 +167,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="location"
-                    className="text-sm font-semibold text-slate-700"
+                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                   >
                     Location
                   </Label>
@@ -179,7 +179,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.location}
                     placeholder="Mirpur, Dhaka"
                     required
-                    className="h-11 rounded-lg border-slate-200 bg-slate-50/50 focus-visible:bg-white"
+                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
                   />
                 </div>
 
@@ -187,13 +187,13 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="eventType"
-                    className="text-sm font-semibold text-slate-700"
+                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                   >
                     Event Type
                   </Label>
 
                   <Select
-                    className="h-11 w-full rounded-lg border-slate-200 bg-slate-50/50 focus-visible:bg-white"
+                    className="h-11 w-full rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
                     id="eventType"
                     name="eventType"
                     required
@@ -216,7 +216,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="sm:col-span-2 space-y-2">
                   <Label
                     htmlFor="thumbnail"
-                    className="text-sm font-semibold text-slate-700"
+                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                   >
                     Thumbnail Image URL
                   </Label>
@@ -228,7 +228,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.thumbnail}
                     placeholder="https://example.com/image.jpg"
                     required
-                    className="h-11 rounded-lg border-slate-200 bg-slate-50/50 focus-visible:bg-white"
+                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
                   />
                 </div>
 
@@ -236,7 +236,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="eventDate"
-                    className="text-sm font-semibold text-slate-700"
+                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                   >
                     Event Date
                   </Label>
@@ -256,7 +256,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
               <div className="space-y-2">
                 <Label
                   htmlFor="description"
-                  className="text-sm font-semibold text-slate-700"
+                  className="text-sm font-semibold text-slate-700 dark:text-gray-300"
                 >
                   Event Description
                 </Label>
@@ -268,18 +268,18 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                   placeholder="Describe your event, its purpose, and how people can participate..."
                   required
                   rows={5}
-                  className="resize-none rounded-lg border-slate-200 bg-slate-50/50 leading-relaxed focus-visible:bg-white"
+                  className="resize-none rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 leading-relaxed focus-visible:bg-background"
                 />
               </div>
             </FieldGroup>
 
             {/* Footer */}
-            <DialogFooter className="flex flex-col-reverse gap-3 border-t border-slate-100 bg-slate-50/70 px-6 py-4 sm:flex-row sm:px-8">
+            <DialogFooter className="flex flex-col-reverse gap-3 border-t border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-4 sm:flex-row sm:px-8">
               <DialogClose
                 render={
                   <Button
                     variant="outline"
-                    className="h-11 rounded-lg border-slate-200 px-6 font-medium hover:bg-white"
+                    className="h-11 rounded-lg border-border dark:border-gray-700 px-6 font-medium hover:bg-muted dark:hover:bg-gray-800"
                   >
                     Cancel
                   </Button>

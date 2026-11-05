@@ -1,9 +1,9 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import Link from "next/link";
+
 import { IJoinedEvent } from "@/app/types/type";
-import { Button } from "@/components/ui/button";
 import EventCard from "@/components/upcoming-events/EventCard";
+import EmptyState from "@/components/shared/EmptyState";
 
 const JoinedEventPage = async () => {
   const session = await auth.api.getSession({
@@ -25,7 +25,7 @@ const JoinedEventPage = async () => {
   const data: IJoinedEvent[] = await res.json();
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]">
+    <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-foreground tracking-tight">
@@ -39,35 +39,13 @@ const JoinedEventPage = async () => {
         </div>
 
         {data.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 text-center rounded-2xl border-2 border-dashed border-border bg-white/50">
-            <div className="mx-auto mb-4 size-12 text-muted-foreground">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <p className="text-sm font-medium text-foreground">
-              No joined events yet
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Browse upcoming events and join the ones that interest you.
-            </p>
-            <div className="mt-8">
-              <Link href="/upcoming-events">
-                <Button>Explore Events</Button>
-              </Link>
-            </div>
-          </div>
+          <EmptyState
+            title="No Joined Events"
+            description="You haven't joined any events yet. Explore upcoming events and make a difference!"
+            message="Find an event to join"
+            buttonText="Joined Event"
+            buttonLink="/upcoming-events"
+          />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.map((event) => (

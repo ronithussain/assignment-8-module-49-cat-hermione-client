@@ -2,6 +2,13 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* dark mood */
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 /* css custom class for sweetAlert2 */
 /* Main Popup */
 .custom-swal-popup {
@@ -41,4 +48,84 @@
   padding: 12px 28px !important;
   font-weight: 600 !important;
   border: none !important;
+}
+
+/* reusable button component css and animation::::::::::::::::: */
+/* Base Button */
+.c-button {
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 0.9em 1.6em;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+}
+
+/* Gooey Button */
+.c-button--gooey {
+  color: #009966;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid #009966;
+  border-radius: 8px;
+  background: transparent;
+  position: relative;
+  transition: all 700ms ease;
+}
+
+/* Blob Container */
+.c-button--gooey .c-button__blobs {
+  height: 100%;
+  filter: url("#goo");
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -3px;
+  right: -1px;
+  z-index: -1;
+}
+
+/* Blob Animation */
+.c-button--gooey .c-button__blobs span {
+  background-color: #009966;
+  width: 34%;
+  height: 100%;
+  border-radius: 100%;
+  position: absolute;
+  transform: scale(1.4) translateY(125%) translateZ(0);
+  transition: all 700ms ease;
+}
+
+.c-button--gooey .c-button__blobs span:nth-child(1) {
+  left: -5%;
+}
+
+.c-button--gooey .c-button__blobs span:nth-child(2) {
+  left: 30%;
+  transition-delay: 60ms;
+}
+
+.c-button--gooey .c-button__blobs span:nth-child(3) {
+  left: 66%;
+  transition-delay: 25ms;
+}
+
+/* Hover */
+.c-button--gooey:hover {
+  color: #fff;
+}
+
+.c-button--gooey:hover .c-button__blobs span {
+  transform: scale(1.4) translateY(0) translateZ(0);
+}
+
+/* Focus accessibility */
+.c-button--gooey:focus-visible {
+  outline: 3px solid #009966;
+  outline-offset: 4px;
 }

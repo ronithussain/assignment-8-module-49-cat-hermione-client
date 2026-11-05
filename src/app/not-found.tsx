@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <main className="flex-1">
 
         {/* 404 Hero */}
@@ -13,7 +13,7 @@ export default function NotFound() {
             {/* Illustration */}
             <div className="order-2 flex justify-center lg:order-1">
               <div className="relative w-full max-w-[280px] sm:max-w-[360px]">
-                <div className="absolute inset-0 rounded-full bg-gray-100 opacity-60 blur-3xl animate-pulse" />
+                <div className="absolute inset-0 rounded-full bg-muted/40 opacity-60 blur-3xl animate-pulse" />
 
                 <svg
                   viewBox="0 0 360 260"
@@ -86,19 +86,19 @@ export default function NotFound() {
             {/* Content */}
             <div className="order-1 mx-auto w-full max-w-[480px] text-center lg:order-2 lg:mx-0 lg:text-left">
 
-              <span className="mb-5 inline-flex rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-xs font-semibold tracking-wider text-blue-600">
+              <span className="mb-5 inline-flex rounded-full border border-blue-100 dark:border-blue-900/30 bg-blue-50 dark:bg-blue-900/20 px-4 py-1.5 text-xs font-semibold tracking-wider text-blue-600 dark:text-blue-400">
                 ERROR 404
               </span>
 
-              <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-[52px]">
+              <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-4xl md:text-5xl lg:text-[52px]">
                 Oops, it&apos;s a 404 error.
               </h1>
 
-              <p className="mb-8 text-base font-medium text-blue-600 sm:text-lg">
+              <p className="mb-8 text-base font-medium text-emerald-600 dark:text-emerald-400 sm:text-lg">
                 This page doesn&apos;t exist.
               </p>
 
-              <p className="mx-auto mb-9 max-w-md text-sm leading-7 text-gray-500 sm:text-base lg:mx-0">
+              <p className="mx-auto mb-9 max-w-md text-sm leading-7 text-slate-500 dark:text-gray-400 sm:text-base lg:mx-0">
                 The page you are looking for might have been removed,
                 had its name changed, or is temporarily unavailable.
               </p>
@@ -107,14 +107,14 @@ export default function NotFound() {
               <div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
                 <Link
                   href="/"
-                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:border-gray-300 hover:bg-gray-50 hover:shadow-md"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border dark:border-gray-700 bg-card dark:bg-gray-800 px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-muted dark:hover:bg-gray-700 hover:shadow-md"
                 >
                   Back to Home
                 </Link>
 
                 <a
                   href="mailto:support@example.com"
-                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg"
                 >
                   Contact Support
                 </a>
@@ -124,15 +124,15 @@ export default function NotFound() {
         </section>
 
         {/* Resources */}
-        <section className="border-y border-gray-200 bg-gray-50 py-12 sm:py-16 lg:py-20">
+        <section className="border-y border-border dark:border-gray-700 bg-muted/30 dark:bg-gray-800/30 py-12 sm:py-16 lg:py-20">
           <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-10">
 
             <div className="mb-8 text-center sm:mb-10 sm:text-left">
-              <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
                 Explore some of our resources
               </h2>
 
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-slate-500 dark:text-gray-400">
                 Find your way back to the information you need.
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function NotFound() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="flex min-h-14 items-center justify-center rounded-xl border border-gray-100 bg-white p-4 text-center text-xs font-semibold text-gray-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:text-blue-600 hover:shadow-md sm:text-sm"
+                  className="flex min-h-14 items-center justify-center rounded-xl border border-border dark:border-gray-700 bg-card dark:bg-gray-800 p-4 text-center text-xs font-semibold text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 dark:hover:border-emerald-900/50 hover:text-emerald-600 dark:hover:text-emerald-400 hover:shadow-md sm:text-sm"
                 >
                   {item.label}
                 </Link>

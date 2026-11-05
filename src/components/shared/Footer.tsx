@@ -78,7 +78,7 @@ export default function Footer() {
   const year = typeof window !== "undefined" ? new Date().getFullYear() : 2026;
 
   return (
-    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800">
+    <footer className="bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top: logo + newsletter */}
         <div className="py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-center">
@@ -95,9 +95,11 @@ export default function Footer() {
                   decoding="async"
                 />
               </Link>
-              <h2 className="text-xl font-bold">Social Events</h2>
+              <h2 className="text-xl font-bold text-foreground">
+                Social Events
+              </h2>
             </div>
-            <p className="text-sm sm:text-base leading-relaxed max-w-md">
+            <p className="text-sm sm:text-base leading-relaxed max-w-md text-muted-foreground">
               Empowering communities through volunteering. Join us to make a
               measurable change in the lives of those who need it most.
             </p>
@@ -108,7 +110,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-teal-600 hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-emerald-600 hover:text-white transition-colors dark:hover:bg-emerald-500"
                 >
                   {social.icon}
                 </a>
@@ -117,10 +119,10 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg sm:text-xl font-bold text-white">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground">
               Subscribe to our Newsletter
             </h3>
-            <p className="text-sm text-slate-400 max-w-md">
+            <p className="text-sm text-muted-foreground max-w-md">
               Get the latest community stories, volunteer opportunities, and
               impact updates straight to your inbox.
             </p>
@@ -128,11 +130,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 min-w-0 pl-4 pr-10 py-3 rounded-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all sm:text-base"
+                className="flex-1 min-w-0 pl-4 pr-10 py-3 rounded-full bg-muted border border-input text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all sm:text-base"
               />
               <Button
                 type="submit"
-                className="bg-teal-600 text-white hover:bg-teal-700 sm:text-base"
+                className="bg-emerald-600 text-white hover:bg-emerald-700 sm:text-base"
               >
                 Subscribe
               </Button>
@@ -140,12 +142,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
+        <div className="border-t border-border pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
           {/* Middle: navigation grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
             {FOOTER_COLUMNS.map((column) => (
               <div key={column.title}>
-                <h4 className="mb-4 sm:mb-5 text-base sm:text-lg font-bold text-white tracking-tight">
+                <h4 className="mb-4 sm:mb-5 text-base sm:text-lg font-bold text-foreground tracking-tight">
                   {column.title}
                 </h4>
                 <ul className="space-y-3 sm:space-y-4">
@@ -153,7 +155,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm sm:text-base text-slate-400 hover:text-teal-400 transition-colors"
+                        className="text-sm sm:text-base text-muted-foreground hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -167,23 +169,23 @@ export default function Footer() {
           {/* Bottom: contact + copyright */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-center">
             <div className="space-y-3">
-              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              <h4 className="text-base sm:text-lg font-bold text-foreground tracking-tight">
                 Contact Us
               </h4>
               {CONTACT_ITEMS.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 mt-0.5 text-teal-400">
+                  <div className="flex-shrink-0 w-6 h-6 mt-0.5 text-emerald-500">
                     {item.icon}
                   </div>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.label}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 sm:mt-0 lg:mt-0 pt-6 lg:pt-0 border-t border-slate-800 lg:border-t-0 lg:border-l lg:pl-12 text-center lg:text-left">
-              <p className="text-xs sm:text-sm text-slate-500">
+            <div className="mt-8 sm:mt-0 lg:mt-0 pt-6 lg:pt-0 border-t border-border lg:border-t-0 lg:border-l lg:pl-12 text-center lg:text-left">
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 © {year} FreddyMatch Community. All rights reserved.
               </p>
             </div>

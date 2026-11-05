@@ -17,7 +17,7 @@ import GithubLoginButton from "../GithubLoginButton";
 import { useState } from "react";
 
 const inputStyle =
-  "flex h-10 w-full rounded-lg border border-gray-200 bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50";
+  "flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -144,22 +144,22 @@ const SignUpPage = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-emerald-100 to-amber-50 px-4 py-8">
-      <div className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[2rem] shadow-2xl border border-gray-200 border-border/50 overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-emerald-100 to-amber-50 dark:from-emerald-900/20 dark:via-gray-900 dark:to-amber-900/20 px-4 py-8">
+      <div className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[2rem] shadow-2xl border border-white/30 dark:border-gray-700/50 overflow-hidden bg-card">
         {/* Left panel: illustration (desktop/tablet only) */}
-        <div className="md:flex hidden flex-col items-center justify-center p-10 relative overflow-hidden bg-gradient-to-br from-emerald-300 to-emerald-200">
-          <div className="absolute top-[-12%] left-[-8%] w-72 h-72 rounded-full bg-green-400/25 blur-[120px]" />
-          <div className="absolute bottom-[-12%] right-[-10%] w-80 h-80 rounded-full bg-emerald-400/25 blur-[120px]" />
+        <div className="md:flex hidden flex-col items-center justify-center p-10 relative overflow-hidden bg-gradient-to-br from-emerald-300 to-emerald-200 dark:from-emerald-900/20 dark:to-emerald-900/20">
+          <div className="absolute top-[-12%] left-[-8%] w-72 h-72 rounded-full bg-green-400/25 dark:bg-green-900/20 blur-[120px]" />
+          <div className="absolute bottom-[-12%] right-[-10%] w-80 h-80 rounded-full bg-emerald-400/25 dark:bg-emerald-900/20 blur-[120px]" />
 
           <div className="relative z-10 flex flex-col items-center text-center max-w-[280px]">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-emerald-700 text-[11px] font-bold uppercase tracking-widest shadow-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-emerald-700 dark:text-emerald-400 text-[11px] font-bold uppercase tracking-widest shadow-sm mb-8">
               <span className="w-2 h-2 rounded-full bg-emerald-600" />
               Cat Hermione
             </div>
-            <h2 className="text-4xl font-bold text-slate-900 tracking-tight leading-tight mb-4">
+            <h2 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
               JOIN WITH US!
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed mb-10">
+            <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed mb-10">
               Please add your information and create an account to get started.
             </p>
 
@@ -319,10 +319,10 @@ const SignUpPage = () => {
         <div className="p-8 md:p-14 flex flex-col justify-center">
           {/* welcome back */}
           <div className="text-center mb-12">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
               Create your account
             </h1>
-            <p className="text-slate-500 text-sm">
+            <p className="text-slate-500 dark:text-gray-400 text-sm">
               Join Cat Hermione to get started
             </p>
           </div>
@@ -333,7 +333,7 @@ const SignUpPage = () => {
           >
             {/* name */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300">
                 <User className="mr-2 size-4" aria-hidden="true" /> Full Name
               </label>
               <input
@@ -348,7 +348,7 @@ const SignUpPage = () => {
             </div>
             {/* email */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300">
                 <Mail className="mr-2 size-4" aria-hidden="true" /> Email
               </label>
               <input
@@ -362,7 +362,7 @@ const SignUpPage = () => {
             </div>
             {/* password */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300">
                 <Lock className="mr-2 size-4" aria-hidden="true" /> Password
               </label>
               <div className="relative">
@@ -379,7 +379,7 @@ const SignUpPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-gray-400"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -391,7 +391,7 @@ const SignUpPage = () => {
 
             {/* confirm password */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300">
                 <Lock className="mr-2 size-4" aria-hidden="true" />
                 Confirm Password
               </label>
@@ -410,7 +410,7 @@ const SignUpPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-gray-400"
                 >
                   {showConfirmPassword ? (
                     <EyeOff size={18} />
@@ -422,7 +422,7 @@ const SignUpPage = () => {
             </div>
             {/* image url */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300">
                 <ImageIcon className="mr-2 size-4" aria-hidden="true" /> Profile
                 Picture
               </label>
@@ -445,11 +445,11 @@ const SignUpPage = () => {
               Create Account
             </Button>
 
-            <p className="text-sm text-slate-600 text-center">
+            <p className="text-sm text-slate-600 dark:text-gray-400 text-center">
               Already have an account?{" "}
               <Link
                 href="/login"
-                className="text-emerald-600 font-medium hover:underline transition-colors"
+                className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline transition-colors"
               >
                 Log in
               </Link>
@@ -459,7 +459,7 @@ const SignUpPage = () => {
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-border" />
               </div>
-              <span className="relative flex justify-center text-xs uppercase tracking-wider bg-white px-2 text-slate-400">
+              <span className="relative flex justify-center text-xs uppercase tracking-wider bg-card dark:bg-gray-800 px-2 text-slate-400">
                 Or
               </span>
             </div>

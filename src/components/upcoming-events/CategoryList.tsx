@@ -2,7 +2,12 @@
 import { IEvents } from "@/app/types/type";
 import { useState } from "react";
 import EventCard from "./EventCard";
-import { CalendarDays, ChevronDown, MapPin, Search, SlidersHorizontal } from "lucide-react";
+import {
+  ChevronDown,
+  Search,
+  SlidersHorizontal,
+} from "lucide-react";
+import EmptyState from "../shared/EmptyState";
 
 const categories = [
   "All",
@@ -65,8 +70,8 @@ const CategoryList = ({ events }: { events: IEvents[] }) => {
               className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300
                 ${
                   selected === cat
-                    ? "border-teal-600 bg-teal-600 text-white shadow-md shadow-teal-600/20"
-                    : "border-gray-200 bg-white text-gray-600 hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700"
+                    ? "border-teal-600 dark:border-teal-500 bg-teal-600 text-white shadow-md shadow-teal-600/20"
+                    : "border-border dark:border-gray-700 bg-card dark:bg-gray-800 text-foreground dark:text-gray-200 hover:border-teal-500 hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:text-teal-700 dark:hover:text-teal-400"
                 }`}
             >
               {cat}
@@ -74,12 +79,13 @@ const CategoryList = ({ events }: { events: IEvents[] }) => {
           ))}
         </div>
 
-        {/* Static Search Input */}
+        {/* Search + Sort */}
         <div className="flex w-full items-center gap-3 lg:w-auto">
+          {/* Search */}
           <div className="relative w-full lg:w-72">
             <Search
               size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
             />
 
             <input
@@ -87,20 +93,21 @@ const CategoryList = ({ events }: { events: IEvents[] }) => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search events title and location..."
-              className="w-full rounded-full border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm text-gray-700 outline-none transition-all placeholder:text-gray-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10"
+              className="w-full rounded-full border border-input bg-background py-3 pl-11 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
             />
           </div>
 
+          {/* Sort */}
           <div className="relative w-full lg:w-64">
-            {/* Sort Icon */}
-            <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-teal-600">
-              <SlidersHorizontal size={18} />
-            </div>
+            <SlidersHorizontal
+              size={18}
+              className="pointer-events-none absolute inset-y-0 left-4 my-auto text-emerald-600 dark:text-emerald-400"
+            />
 
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full rounded-full border border-gray-200 bg-white py-3 pl-11 pr-4 text-sm text-gray-700 outline-none transition-all placeholder:text-gray-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10"
+              className="w-full appearance-none rounded-full border border-input bg-background py-3 pl-11 pr-10 text-sm text-foreground outline-none transition-all focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
             >
               {sortOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -109,48 +116,17 @@ const CategoryList = ({ events }: { events: IEvents[] }) => {
               ))}
             </select>
 
-            {/* Dropdown Arrow */}
-            <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
-              <ChevronDown size={18} />
-            </div>
+            <ChevronDown
+              size={18}
+              className="pointer-events-none absolute inset-y-0 right-4 my-auto text-muted-foreground"
+            />
           </div>
         </div>
       </div>
 
       {/* Events */}
       {sortedEvents.length === 0 ? (
-        <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border border-dashed border-emerald-200 bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/60 px-6 py-20 text-center shadow-sm">
-          {/* Background Decoration */}
-          <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-emerald-100/40 blur-3xl" />
-          <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-teal-100/40 blur-3xl" />
-
-          {/* Icon */}
-          <div className="relative mb-6 flex h-20 w-20 items-center justify-center rounded-3xl border border-emerald-100 bg-white shadow-lg shadow-emerald-100/60">
-            <MapPin className="h-9 w-9 text-emerald-600" />
-
-            <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full border-4 border-white bg-emerald-500 text-white">
-              <CalendarDays className="h-3.5 w-3.5" />
-            </span>
-          </div>
-
-          {/* Content */}
-          <div className="relative space-y-2">
-            <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
-              No Upcoming Events
-            </h3>
-
-            <p className="mx-auto max-w-sm text-sm leading-6 text-gray-500">
-              There are no events scheduled right now. Stay connected and check
-              back soon for exciting opportunities to make a difference!
-            </p>
-          </div>
-
-          {/* Bottom Badge */}
-          <div className="relative mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/80 px-4 py-2 text-xs font-medium text-emerald-700 shadow-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-            New opportunities are coming soon
-          </div>
-        </div>
+        <EmptyState/>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {sortedEvents.map((event) => (

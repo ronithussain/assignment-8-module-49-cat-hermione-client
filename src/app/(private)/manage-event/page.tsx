@@ -5,6 +5,7 @@ import Link from "next/link";
 import ManageEventCard from "@/app/(private)/_components/ManageEventCard";
 import { IEvents } from "@/app/types/type";
 import { Button } from "@/components/ui/button";
+import EmptyState from "@/components/shared/EmptyState";
 
 interface StatCardProps {
   title: string;
@@ -13,7 +14,7 @@ interface StatCardProps {
 }
 
 const StatCard = ({ title, value, color }: StatCardProps) => (
-  <div className={`rounded-xl border p-6 ${color} shadow-sm`}>
+  <div className={`rounded-xl border p-6 shadow-sm ${color}`}>
     <p className="text-sm font-medium text-muted-foreground">{title}</p>
     <p className="mt-1 text-2xl font-bold text-foreground">{value}</p>
   </div>
@@ -51,7 +52,7 @@ const ManageEventPage = async () => {
   const pastEvents = totalEvents - upcomingEvents;
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]">
+    <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10">
@@ -76,40 +77,32 @@ const ManageEventPage = async () => {
             <StatCard
               title="Total Events"
               value={totalEvents}
-              color="border-blue-100 bg-blue-50"
+              color="border-blue-100 dark:border-blue-900/30 bg-blue-50 dark:bg-blue-900/20"
             />
 
             <StatCard
               title="Upcoming"
               value={upcomingEvents}
-              color="border-emerald-100 bg-emerald-50"
+              color="border-emerald-100 dark:border-emerald-900/30 bg-emerald-50 dark:bg-emerald-900/20"
             />
 
             <StatCard
               title="Past"
               value={pastEvents}
-              color="border-gray-100 bg-gray-50"
+              color="border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
             />
           </div>
         </div>
 
         {/* Events */}
         {data.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border bg-white/50 py-24 text-center">
-            <p className="text-sm font-medium text-foreground">
-              No events created yet
-            </p>
-
-            <p className="mt-1 text-sm text-muted-foreground">
-              Create your first event and start managing it here.
-            </p>
-
-            <div className="mt-8">
-              <Link href="/create-event">
-                <Button>Create Your First Event</Button>
-              </Link>
-            </div>
-          </div>
+          <EmptyState
+            title="No Events Created Yet"
+            description="You haven't created any events. Start organizing a community event today!"
+            message="Your first event is waiting"
+            buttonText="Create Event"
+            buttonLink="/create-event"
+          />
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.map((event) => (
