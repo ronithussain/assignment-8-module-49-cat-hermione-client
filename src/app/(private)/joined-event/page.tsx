@@ -1,10 +1,9 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
-
-import JoinedEventCard from "@/app/(private)/_components/JoinedEventCard";
 import { IJoinedEvent } from "@/app/types/type";
 import { Button } from "@/components/ui/button";
+import EventCard from "@/components/upcoming-events/EventCard";
 
 const JoinedEventPage = async () => {
   const session = await auth.api.getSession({
@@ -72,7 +71,7 @@ const JoinedEventPage = async () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.map((event) => (
-              <JoinedEventCard key={event._id} event={event} />
+              <EventCard key={event._id} event={event} />
             ))}
           </div>
         )}

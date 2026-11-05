@@ -5,40 +5,48 @@ import Statistick from "@/components/home/Statistick";
 
 import { IEvents } from "@/app/types/type";
 import RecentUpcomingEvents from "@/components/home/RecentUpcomingEvents";
+import PastEvents from "@/components/home/PastEvents";
 
-async function getRecentEvents(): Promise<IEvents[]> {
-  try {
-    const res = await fetch("http://localhost:7000/recent-events", {
-      cache: "no-store",
-    });
+const getPastEventsFetch = async (): Promise<IEvents[]> => {
+  const res = await fetch("http://localhost:7000/past-events", {
+    cache: "no-store",
+  });
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch events: ${res.status}`);
-    }
-
-    const data = await res.json();
-
-    console.log(data, "upcoming 6 data");
-
-    // Backend যদি { success: true, events: [] } পাঠায়
-    return Array.isArray(data) ? data : data.events ?? [];
-  } catch (error) {
-    console.error("Upcoming events fetch error:", error);
-    return [];
+  if (!res.ok) {
+    throw new Error(`Failed to fetch events: ${res.status}`);
   }
+
+  const data = await res.json();
+  return data;
+};
+async function getRecentEvents(): Promise<IEvents[]> {
+  const res = await fetch("http://localhost:7000/recent-events", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch events: ${res.status}`);
+  }
+
+  const data = await res.json();
+
+  // console.log(data, "upcoming 6 data");
+  return data;
 }
 
 export default async function Home() {
-  const events = await getRecentEvents();
+  const recentEvents = await getRecentEvents();
+  const pastEvents = await getPastEventsFetch();
 
   return (
     <div>
       <Banner />
       <Statistick />
 
-      <RecentUpcomingEvents events={events} />
+      <RecentUpcomingEvents recentEvents={recentEvents} />
 
       <Feature />
+      <PastEvents pastEvents={pastEvents} />
       <NewsLater />
     </div>
   );

@@ -4,11 +4,12 @@ export interface IEvents {
   location: string;
   eventType: string;
   thumbnail: string;
-  eventDate: string;
   description: string;
   creatorEmail: string;
   creatorImage: string;
   creatorName: string;
+  eventDate: string;
+  createAt: string;
 }
 
 export interface IJoinedEvent extends IEvents {
