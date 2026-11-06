@@ -11,7 +11,7 @@ interface IParamsProps {
 const EventDetailPage = async ({ params }: IParamsProps) => {
   const { eventId } = await params;
 
-  const res = await fetch(`http://localhost:7000/upcoming-events/${eventId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-events/${eventId}`, {
     next: { revalidate: 60 },
   });
 

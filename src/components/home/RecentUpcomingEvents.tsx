@@ -9,31 +9,14 @@ interface RecentUpcomingEventsProps {
   recentEvents: IEvents[];
 }
 
-function formatDateTime(date: string) {
-  const eventDate = new Date(date);
 
-  return {
-    date: eventDate.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      timeZone: "Asia/Dhaka",
-    }),
-
-    time: eventDate.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZone: "Asia/Dhaka",
-    }),
-  };
-}
 
 export default function RecentUpcomingEvents({
   recentEvents,
 }: RecentUpcomingEventsProps) {
   return (
-    <section className="bg-background dark:bg-gray-900 px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-background dark:bg-gray-900 py-16 ">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div data-aos="fade-up"
           data-aos-duration="900" 

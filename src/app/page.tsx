@@ -9,7 +9,7 @@ import NewsLater from "@/components/home/NewsLater";
 import { IEvents } from "@/app/types/type";
 
 const getPastEventsFetch = async (): Promise<IEvents[]> => {
-  const res = await fetch("http://localhost:7000/past-events", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/past-events`, {
     cache: "no-store",
   });
 
@@ -21,7 +21,7 @@ const getPastEventsFetch = async (): Promise<IEvents[]> => {
   return data;
 };
 async function getRecentEvents(): Promise<IEvents[]> {
-  const res = await fetch("http://localhost:7000/recent-events", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recent-events`, {
     cache: "no-store",
   });
 

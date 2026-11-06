@@ -24,7 +24,7 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
        const token = await getTokenFromClient()
     try {
       const res = await fetch(
-        `http://localhost:7000/upcoming-events/${event._id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/upcoming-events/${event._id}`,
         {
           method: "DELETE",
           headers:{
@@ -68,10 +68,10 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
         />
 
         {/* Delete confirmation dialog (UI only) */}
-        <AlertDialogContent className="w-[calc(100%_-_2rem)] gap-0 overflow-hidden rounded-2xl bg-card p-0 text-foreground shadow-2xl ring-0 data-[size=default]:max-w-md data-[size=default]:sm:max-w-md">
+        <AlertDialogContent className="w-[calc(100%_-_2rem)] gap-0 overflow-hidden rounded-2xl bg-card p-0 text-foreground shadow-2xl ring-0 data-[size=default]:max-w-md data-[size=default]:sm:max-w-md bg-white dark:bg-slate-900">
           {/* Close button */}
-          <AlertDialogCancel className="absolute right-3 top-3 h-8 w-8 gap-0 rounded-lg px-0 text-muted-foreground transition-colors hover:bg-muted dark:hover:bg-gray-800 hover:text-foreground dark:hover:text-white">
-            <X className="size-4" />
+          <AlertDialogCancel className="absolute right-3 top-3 h-8 w-8 gap-0 rounded-lg px-0 text-muted-foreground transition-colors hover:bg-muted dark:hover:bg-gray-800 hover:text-foreground dark:hover:text-white border-none">
+            <X className="size-6" />
             <span className="sr-only">Close dialog</span>
           </AlertDialogCancel>
 
@@ -82,13 +82,13 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
             </div>
 
             <div className="space-y-1.5 pt-0.5">
-              <AlertDialogTitle className="text-lg font-semibold tracking-tight text-foreground">
+              <AlertDialogTitle className="dark:text-gray-200 text-gray-700 text-lg font-semibold tracking-tight text-foreground">
                 Delete this event?
               </AlertDialogTitle>
 
               <AlertDialogDescription className="text-sm leading-relaxed text-muted-foreground">
                 This will permanently remove
-                <span className="font-semibold text-foreground">
+                <span className="dark:text-gray-200 text-gray-700 font-semibold text-foreground">
                   {event.title}
                 </span>
                 from your events. This action cannot be undone.
@@ -101,23 +101,23 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
             {/* Warning callout */}
             <div className="flex items-start gap-3 rounded-xl border border-red-100 dark:border-red-900/30 bg-red-50 dark:bg-red-900/20 p-3.5">
               <TriangleAlert className="mt-0.5 size-4 shrink-0 text-red-500 dark:text-red-400" />
-              <p className="text-xs leading-relaxed text-red-600/90 dark:text-red-400">
+              <p className="text-xs  leading-relaxed text-red-600/90 dark:text-red-400">
                 Everyone who joined will lose access to this event right away,
                 and it will disappear from the upcoming events list.
               </p>
             </div>
 
             {/* Event summary */}
-            <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-3">
+            <div className="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-card p-3">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground ring-1 ring-border dark:ring-gray-700">
                 <CalendarDays className="size-4" />
               </div>
 
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-foreground">
+                <p className="truncate text-sm dark:text-gray-200 text-gray-700 font-semibold text-foreground">
                   {event.title}
                 </p>
-                <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                <p className="mt-0.5 truncate text-xs dark:text-gray-200 text-gray-700 text-muted-foreground">
                   {event.eventDate} · {event.location}
                 </p>
               </div>
@@ -125,8 +125,8 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
           </div>
 
           {/* Footer */}
-          <div className="flex flex-col gap-3 border-t border-border bg-muted px-6 py-4 sm:flex-row sm:justify-end sm:px-7">
-            <AlertDialogCancel className="h-10 p-3 flex-1 rounded-lg border-border bg-card px-5 font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground sm:flex-none">
+          <div className="flex flex-col gap-3 border-t border-gray-200 dark:border-slate-700 bg-muted px-6 py-4 sm:flex-row sm:justify-end sm:px-7">
+            <AlertDialogCancel className="h-10 p-3 flex-1 rounded-lg border-gray-200 dark:border-slate-700 bg-card px-5 font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground sm:flex-none">
               Cancel
             </AlertDialogCancel>
 

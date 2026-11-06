@@ -72,7 +72,7 @@ const CreateEventForm = () => {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:7000/events", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

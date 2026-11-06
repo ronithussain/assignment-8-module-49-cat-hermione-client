@@ -27,6 +27,7 @@ import {
 import { toast } from "sonner";
 import Image from "next/image";
 import ThemeToggle from "../theme/ThemeToggle";
+import ThemeSelector from "../theme/ThemeSelector";
 
 const navLinks = [
   { label: "Home", href: "/", icon: House },
@@ -99,7 +100,7 @@ export default function Navbar() {
   };
   return (
     <header className="sticky top-0 z-50 w-full  border-b border-white/10 bg-white/70 shadow-lg shadow-black/5 backdrop-blur-md dark:bg-black/40">
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-0.5 sm:px-4 sm:px-8 lg:px-10">
         {/* Left Side: Logo */}
         {/* Logo + Brand */}
         <Link
@@ -135,7 +136,7 @@ export default function Navbar() {
         </Link>
 
         {/* Right Side: Navigation + User Section */}
-        <div className="flex items-center gap-4 lg:gap-7">
+        <div className="flex items-center ">
           {/* Navigation Links */}
           <nav
             aria-label="Main navigation"
@@ -164,9 +165,9 @@ export default function Navbar() {
               );
             })}
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <ThemeSelector />
           </nav>
-          <div className="flex w-36 shrink-0 items-center justify-end gap-3 sm:w-44">
+          <div className="flex w-36 border-l-4 rounded-bl-2xl rounded-tl-2xl border-[#0a835a] ml-4 shrink-0 items-center justify-end gap-3 sm:w-44">
             {isPending ? (
               <div className="flex items-center gap-3">
                 <div className="size-9 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
@@ -197,7 +198,7 @@ export default function Navbar() {
                     align="end"
                     className="w-[280px] px-2 py-4 bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-2xl"
                   >
-                    <DropdownMenuGroup>
+                    <DropdownMenuGroup className=''>
                       {dropdownLinks.map((link) => {
                         const Icon = link.icon;
                         const active = isMenuActive(link.href);
@@ -224,7 +225,9 @@ export default function Navbar() {
                           </DropdownMenuItem>
                         );
                       })}
-
+<div className="absolute top-6 right-8">
+  <ThemeToggle/>
+</div>
                       {/* Sign out */}
                       <DropdownMenuItem
                         onClick={handleSignOut}
@@ -240,7 +243,7 @@ export default function Navbar() {
                 {/* Separate Logout Button */}
                 <button
                   onClick={handleSignOut}
-                  className="whitespace-nowrap rounded-md bg-[#15A1BF] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
+                  className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
                 >
                   Logout
                 </button>

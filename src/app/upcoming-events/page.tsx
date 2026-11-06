@@ -3,7 +3,7 @@ import { IEvents } from "../types/type";
 import CategoryList from "@/components/upcoming-events/CategoryList";
 
 const UpcomingEventsPage = async () => {
-  const res = await fetch(`http://localhost:7000/upcoming-events`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upcoming-events`, {
     next: { revalidate: 60 },
   });
 

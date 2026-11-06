@@ -31,7 +31,7 @@ const PastEvents = ({ pastEvents }: IPastEventProps) => {
   return (
     <div>
       <section className="bg-background dark:bg-gray-900 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+        <div className=" px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
           {/* Section Heading */}
           <div data-aos="fade-up"
           data-aos-duration="900"  className="mx-auto mb-12 max-w-2xl text-center">
