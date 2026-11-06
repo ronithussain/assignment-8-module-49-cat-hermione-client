@@ -96,7 +96,7 @@ export default function Feature() {
             return (
               <div
                 key={feature.title}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border dark:border-gray-700 bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:shadow-xl hover:shadow-emerald-900/5 sm:p-8"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-700 bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:shadow-xl hover:shadow-emerald-900/5 sm:p-8"
               >
 
                 {/* Top Accent */}

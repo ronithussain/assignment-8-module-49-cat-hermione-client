@@ -115,7 +115,7 @@ export default function Statistick() {
               return (
                 <div
                   key={stat.label}
-                  className="group rounded-3xl border border-border dark:border-gray-700 bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-card dark:hover:bg-gray-800 hover:shadow-xl hover:shadow-black/10"
+                  className="group rounded-3xl border border-gray-200 dark:border-gray-700 bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-card dark:hover:bg-gray-800 hover:shadow-xl hover:shadow-black/10"
                 >
                   <div className="flex items-center justify-between">
                     <div className={`flex size-12 items-center justify-center rounded-2xl ${stat.color} dark:${stat.color.replace('bg-', 'bg-gray-900/')}`}>
@@ -199,7 +199,7 @@ export default function Statistick() {
         </div>
 
         {/* Bottom Note */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border dark:border-gray-700 pt-6 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 dark:border-gray-700 pt-6 sm:flex-row">
           <p className="text-sm text-slate-500 dark:text-gray-400">
             Every contribution matters. Every volunteer makes a difference.
           </p>

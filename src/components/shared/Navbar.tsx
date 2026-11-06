@@ -10,6 +10,7 @@ import {
   CreditCard,
   Settings,
   CircleHelp,
+  Mail,
 } from "lucide-react";
 
 import { useSession, signOut } from "@/lib/auth-client";
@@ -29,13 +30,45 @@ import ThemeToggle from "../theme/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/", icon: House },
+
   {
     label: "Upcoming Events",
     href: "/upcoming-events",
     icon: PlusCircle,
   },
 ];
-
+const dropdownLinks = [
+  {
+    label: "Profile",
+    href: "/profile",
+    icon: User,
+  },
+  {
+    label: "Create Events",
+    href: "/create-event",
+    icon: MessageCircle,
+  },
+  {
+    label: "Manage Events",
+    href: "/manage-event",
+    icon: CreditCard,
+  },
+  {
+    label: "Joined Events",
+    href: "/joined-event",
+    icon: Settings,
+  },
+  {
+    label: "About",
+    href: "/about",
+    icon: CircleHelp,
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    icon: Mail,
+  },
+];
 export default function Navbar() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
@@ -61,6 +94,9 @@ export default function Navbar() {
     }
   };
 
+  const isMenuActive = (href: string) => {
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
   return (
     <header className="sticky top-0 z-50 w-full ">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-10">
@@ -159,60 +195,40 @@ export default function Navbar() {
 
                   <DropdownMenuContent
                     align="end"
-                    className="w-[280px] px-2 py-4 bg-white dark:bg-gray-800 rounded-3xl  border-gray-200 dark:border-gray-700 shadow-2xl"
+                    className="w-[280px] px-2 py-4 bg-white dark:bg-gray-800 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-2xl"
                   >
                     <DropdownMenuGroup>
-                      {/* Profile */}
-                      <DropdownMenuItem
-                        onClick={() => router.push("/profile")}
-                        className="cursor-pointer bg-slate-100 dark:bg-gray-800 rounded-2xl px-4 py-3.5 text-slate-900 dark:text-white font-medium"
-                      >
-                        <User className="mr-3 size-5 text-slate-600 dark:text-gray-400" />
-                        Profile
-                      </DropdownMenuItem>
+                      {dropdownLinks.map((link) => {
+                        const Icon = link.icon;
+                        const active = isMenuActive(link.href);
 
-                      {/* Community */}
-                      <DropdownMenuItem
-                        onClick={() => router.push("/create-event")}
-                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 dark:hover:bg-gray-800/50 transition-colors"
-                      >
-                        <MessageCircle className="mr-3 size-5 text-slate-500 dark:text-gray-400" />
-                        Create Events
-                      </DropdownMenuItem>
+                        return (
+                          <DropdownMenuItem
+                            key={link.href}
+                            onClick={() => router.push(link.href)}
+                            className={`cursor-pointer rounded-2xl px-4 py-3.5 transition-colors ${
+                              active
+                                ? "bg-slate-100 text-[#009966] dark:bg-gray-700 dark:text-white font-medium"
+                                : "text-foreground hover:bg-slate-100 dark:hover:bg-gray-800"
+                            }`}
+                          >
+                            <Icon
+                              className={`mr-3 size-5 ${
+                                active
+                                  ? "text-emerald-600 dark:text-emerald-400"
+                                  : "text-slate-500 dark:text-gray-400"
+                              }`}
+                            />
 
-                      {/* Subscription with PRO badge */}
-                      <DropdownMenuItem
-                        onClick={() => router.push("/manage-event")}
-                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 dark:hover:bg-gray-800/50 transition-colors flex items-center justify-between"
-                      >
-                        <div className="flex items-center gap-3">
-                          <CreditCard className="size-5 text-slate-500 dark:text-gray-400" />
-                          Manage Events
-                        </div>
-                      </DropdownMenuItem>
-
-                      {/* Settings */}
-                      <DropdownMenuItem
-                        onClick={() => router.push("/joined-event")}
-                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 dark:hover:bg-gray-800/50 transition-colors"
-                      >
-                        <Settings className="mr-3 size-5 text-slate-500 dark:text-gray-400" />
-                        Joined Events
-                      </DropdownMenuItem>
-
-                      {/* Help center */}
-                      <DropdownMenuItem
-                        onClick={() => router.push("/")}
-                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-slate-50 dark:hover:bg-gray-800/50 transition-colors border-t border-slate-100 dark:border-gray-700 mt-2 pt-2"
-                      >
-                        <CircleHelp className="mr-3 size-5 text-slate-500 dark:text-gray-400" />
-                        Help center
-                      </DropdownMenuItem>
+                            {link.label}
+                          </DropdownMenuItem>
+                        );
+                      })}
 
                       {/* Sign out */}
                       <DropdownMenuItem
                         onClick={handleSignOut}
-                        className="cursor-pointer rounded-2xl px-4 py-3.5 hover:bg-red-50 text-red-600 font-medium transition-colors"
+                        className="cursor-pointer rounded-2xl px-4 py-3.5 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 font-medium"
                       >
                         <LogOut className="mr-3 size-5 text-red-600" />
                         Sign out

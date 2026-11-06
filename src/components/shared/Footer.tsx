@@ -93,11 +93,11 @@ export default function Footer() {
   const year = typeof window !== "undefined" ? new Date().getFullYear() : 2026;
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-300">
+    <footer className="bg-white/50 dark:bg-slate-900 border-t   border-gray-300 dark:border-gray-500 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top: newsletter banner (news later section) */}
         <div
-          className="relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 p-8 sm:p-12 lg:p-16 mb-12 sm:mb-16 lg:mb-20"
+          className="relative overflow-hidden rounded-2xl bg-slate-700  dark:bg-slate-800 border  border-gray-200 dark:border-gray-700 p-8 sm:p-12 lg:p-16 mb-12 sm:mb-16 lg:mb-20"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-4 sm:space-y-6">
@@ -149,7 +149,7 @@ export default function Footer() {
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title}>
               {column.title && (
-                <h4 className="mb-4 sm:mb-5 text-base sm:text-lg font-bold text-white tracking-tight">
+                <h4 className="mb-4 sm:mb-5 text-base sm:text-lg font-bold text-slate-700 dark:text-gray-400 tracking-tight">
                   {column.title}
                 </h4>
               )}
@@ -159,7 +159,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm sm:text-base text-slate-400 hover:text-emerald-400 transition-colors"
+                        className="text-sm sm:text-base text-slate-600 dark:text-slate-400 hover:text-emerald-400 transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -176,11 +176,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-slate-800 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
+        <div className="border-t  border-gray-200 dark:border-gray-700 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
           {/* Bottom: contact + copyright + legal */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-center">
             <div className="space-y-3">
-              <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
+              <h4 className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200 tracking-tight">
                 Contact Us
               </h4>
               {CONTACT_ITEMS.map((item, i) => (
@@ -188,7 +188,7 @@ export default function Footer() {
                   <div className="flex-shrink-0 w-6 h-6 mt-0.5 text-emerald-500">
                     {item.icon}
                   </div>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-slate-500 dark:text-slate-700 leading-relaxed">
                     {item.label}
                   </p>
                 </div>
@@ -200,7 +200,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-emerald-600 hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-lg bg-slate-800 border  border-gray-200 dark:border-gray-700 flex items-center justify-center text-slate-300 hover:bg-emerald-600 hover:text-white transition-colors"
                     aria-label={social.label}
                   >
                     {social.icon}
@@ -209,7 +209,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="mt-8 sm:mt-0 lg:mt-0 pt-6 lg:pt-0 border-t border-slate-800 lg:border-t-0 lg:border-l lg:pl-12 text-center lg:text-left">
+            <div className="mt-8 sm:mt-0 lg:mt-0 pt-6 lg:pt-0 border-t border-gray-200 dark:border-gray-700 lg:border-t-0 lg:border-l lg:pl-12 text-center lg:text-left">
               <p className="text-xs sm:text-sm text-slate-500">
                 © {year} Sodila Events Inc. All rights reserved.
               </p>
