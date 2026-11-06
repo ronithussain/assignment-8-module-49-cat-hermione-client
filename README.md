@@ -6,9 +6,9 @@ Kindora is a community-driven social development platform where people can creat
 
 ## 🔗 Live Website
 
-- **Live Site:** [Your Live Website URL](https://your-live-site-url.vercel.app)
-- **Client Repository:** [GitHub Client Repository](https://github.com/your-username/your-client-repo)
-- **Server Repository:** [GitHub Server Repository](https://github.com/your-username/your-server-repo)
+- **Live Site:** https://assignment-8-module-49-cat-hermione-client-9xf19546i.vercel.app
+- **Client Repository:** https://github.com/ronithussain/assignment-8-module-49-cat-hermione-client.git
+- **Server Repository:** https://github.com/ronithussain/assignment-8-module-49-cat-hermione-server.git
 
 ---
 
