@@ -1,21 +1,21 @@
-'use client';
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { signIn } from '@/lib/auth-client';
-import { redirect } from 'next/navigation';
-import Swal from 'sweetalert2';
-import GoogleLoginButton from '../GoogleLoginButton';
-import GithubLoginButton from '../GithubLoginButton';
+"use client";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { signIn } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import Swal from "sweetalert2";
+import GoogleLoginButton from "../GoogleLoginButton";
+import GithubLoginButton from "../GithubLoginButton";
 
 const inputStyle =
-  'flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50';
+  "flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
-   const handleLogin = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries()) as {
@@ -27,48 +27,43 @@ const LoginPage = () => {
       ...userData,
     });
     if (data) {
-       await Swal.fire({
-              icon: "success",
-              title: "Welcome Aboard!",
-              text: "Your account has been login successfully.",
-              confirmButtonText: "Let's Explore",
-      
-              buttonsStyling: false,
-      
-              customClass: {
-                popup: "custom-swal-popup",
-                title: "custom-swal-title",
-                htmlContainer: "custom-swal-text",
-                confirmButton: "custom-swal-confirm",
-              },
-            });
+      await Swal.fire({
+        icon: "success",
+        title: "Welcome Aboard!",
+        text: "Your account has been login successfully.",
+        confirmButtonText: "Let's Explore",
+
+        buttonsStyling: false,
+
+        customClass: {
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          htmlContainer: "custom-swal-text",
+          confirmButton: "custom-swal-confirm",
+        },
+      });
       redirect("/");
     } else {
-       await Swal.fire({
-              icon: "error",
-              title: "Oops!",
-              text: error?.message || "Unable to create your account.",
-              confirmButtonText: "Try Again",
-      
-              buttonsStyling: false,
-      
-              customClass: {
-                popup: "custom-swal-popup",
-                title: "custom-swal-title",
-                htmlContainer: "custom-swal-text",
-                confirmButton: "custom-swal-confirm",
-              },
-            });
+      await Swal.fire({
+        icon: "error",
+        title: "Oops!",
+        text: error?.message || "Unable to create your account.",
+        confirmButtonText: "Try Again",
+
+        buttonsStyling: false,
+
+        customClass: {
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          htmlContainer: "custom-swal-text",
+          confirmButton: "custom-swal-confirm",
+        },
+      });
     }
   };
   return (
-    <section
-      className="min-h-screen bg-gradient-to-br from-emerald-50 via-emerald-100 to-amber-50 dark:from-emerald-900/20 dark:via-gray-900 dark:to-amber-900/20 flex items-center justify-center  px-4 py-8"
-    >
-      <div
-        className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-[0.7fr_1.6fr_0.7fr] gap-4 md:gap-6 rounded-[2rem] shadow-2xl border border-white/30 dark:border-gray-700/50 overflow-hidden bg-card relative"
-      >
-
+    <section className="min-h-screen bg-gradient-to-br from-emerald-50 via-emerald-100 to-amber-50 dark:from-emerald-900/20 dark:via-gray-900 dark:to-amber-900/20 flex items-center justify-center  px-4 py-8">
+      <div className="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-[0.7fr_1.6fr_0.7fr] gap-4 md:gap-6 rounded-[2rem] shadow-2xl border border-white/30 dark:border-gray-700/50 overflow-hidden bg-card relative">
         {/* Left: undraw tree illustration (tablet/desktop only) */}
         <div className="md:flex hidden items-center justify-center p-8 relative z-10">
           <svg
@@ -134,18 +129,21 @@ const LoginPage = () => {
           </p>
 
           <form
-          onSubmit={handleLogin}
+            onSubmit={handleLogin}
             className="w-full space-y-5 max-w-5xl"
             noValidate
           >
             <div className="space-y-2 relative">
               <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 flex items-center gap-2">
-                <Mail className="size-4 text-slate-400 dark:text-gray-500" aria-hidden="true" />
+                <Mail
+                  className="size-4 text-slate-400 dark:text-gray-500"
+                  aria-hidden="true"
+                />
                 Email address
               </label>
               <input
                 type="email"
-                name='email'
+                name="email"
                 placeholder="Enter your email"
                 autoComplete="email"
                 required
@@ -155,22 +153,27 @@ const LoginPage = () => {
 
             <div className="space-y-2 relative">
               <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 flex items-center gap-2">
-                <Lock className="size-4 text-slate-400 dark:text-gray-500" aria-hidden="true" />
+                <Lock
+                  className="size-4 text-slate-400 dark:text-gray-500"
+                  aria-hidden="true"
+                />
                 Password
               </label>
               <div className="relative">
                 <input
-                  type={passwordVisible ? 'text' : 'password'}
+                  type={passwordVisible ? "text" : "password"}
                   placeholder="Enter your password"
-                  name='password'
+                  name="password"
                   autoComplete="current-password"
                   required
-                  className={inputStyle + ' pr-10'}
+                  className={inputStyle + " pr-10"}
                 />
                 <button
                   type="button"
                   onClick={() => setPasswordVisible(!passwordVisible)}
-                  aria-label={passwordVisible ? 'Hide password' : 'Show password'}
+                  aria-label={
+                    passwordVisible ? "Hide password" : "Show password"
+                  }
                   className="absolute inset-y-0 right-2 flex items-center"
                 >
                   {passwordVisible ? (
@@ -212,9 +215,8 @@ const LoginPage = () => {
             </p>
 
             <div className="grid grid-cols-2 gap-3 w-full">
-              <GoogleLoginButton/>
-              <GithubLoginButton/>
-              
+              <GoogleLoginButton />
+              <GithubLoginButton />
             </div>
 
             <p className="text-sm text-slate-500 dark:text-gray-400 text-center mt-4">
@@ -245,29 +247,82 @@ const LoginPage = () => {
               </linearGradient>
             </defs>
             {/* shadow */}
-            <ellipse cx="110" cy="250" rx="48" ry="14" fill="url(#shadowGrad)" />
+            <ellipse
+              cx="110"
+              cy="250"
+              rx="48"
+              ry="14"
+              fill="url(#shadowGrad)"
+            />
             {/* legs */}
-            <path d="M 100 178 L 96 244" stroke="#2563eb" strokeWidth="11" strokeLinecap="round" fill="none" />
-            <path d="M 120 178 L 124 244" stroke="#2563eb" strokeWidth="11" strokeLinecap="round" fill="none" />
+            <path
+              d="M 100 178 L 96 244"
+              stroke="#2563eb"
+              strokeWidth="11"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 120 178 L 124 244"
+              stroke="#2563eb"
+              strokeWidth="11"
+              strokeLinecap="round"
+              fill="none"
+            />
             {/* shoes */}
             <rect x="86" y="242" width="16" height="9" rx="5" fill="#cbd5e1" />
             <rect x="98" y="242" width="16" height="9" rx="5" fill="#cbd5e1" />
             {/* body */}
             <rect x="88" y="100" width="24" height="68" rx="6" fill="#f97316" />
             {/* arm waving */}
-            <path d="M 88 114 Q 72 124 62 138" stroke="#f97316" strokeWidth="11" strokeLinecap="round" fill="none" />
+            <path
+              d="M 88 114 Q 72 124 62 138"
+              stroke="#f97316"
+              strokeWidth="11"
+              strokeLinecap="round"
+              fill="none"
+            />
             <circle cx="62" cy="138" r="5" fill="#f59e0b" />
             {/* head */}
             <circle cx="100" cy="74" r="14" fill="#f59e0b" />
-            <path d="M 88 63 Q 100 57 112 63" stroke="#1f2937" strokeWidth="2" fill="none" />
-            <path d="M 88 51 Q 100 55 112 51" stroke="#1f2937" strokeWidth="6" strokeLinecap="round" fill="none" />
+            <path
+              d="M 88 63 Q 100 57 112 63"
+              stroke="#1f2937"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path
+              d="M 88 51 Q 100 55 112 51"
+              stroke="#1f2937"
+              strokeWidth="6"
+              strokeLinecap="round"
+              fill="none"
+            />
             {/* flowers */}
             <circle cx="142" cy="174" r="5" fill="#f472b6" />
             <circle cx="144" cy="170" r="3" fill="#fbbf24" />
-            <path d="M 142 174 Q 152 164 158 174" stroke="#f472b6" strokeWidth="2" fill="none" strokeLinecap="round" />
+            <path
+              d="M 142 174 Q 152 164 158 174"
+              stroke="#f472b6"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+            />
             {/* grass right */}
-            <path d="M 140 260 Q 160 242 180 260" stroke="#10b981" strokeWidth="7" fill="none" strokeLinecap="round" />
-            <path d="M 180 260 Q 195 242 198 260" stroke="#059669" strokeWidth="5" fill="none" strokeLinecap="round" />
+            <path
+              d="M 140 260 Q 160 242 180 260"
+              stroke="#10b981"
+              strokeWidth="7"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <path
+              d="M 180 260 Q 195 242 198 260"
+              stroke="#059669"
+              strokeWidth="5"
+              fill="none"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
       </div>

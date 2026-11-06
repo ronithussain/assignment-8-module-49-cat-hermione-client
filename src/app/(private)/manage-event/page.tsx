@@ -6,6 +6,7 @@ import ManageEventCard from "@/app/(private)/_components/ManageEventCard";
 import { IEvents } from "@/app/types/type";
 import { Button } from "@/components/ui/button";
 import EmptyState from "@/components/shared/EmptyState";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 interface StatCardProps {
   title: string;
@@ -31,8 +32,13 @@ const ManageEventPage = async () => {
   if (!user?.email) {
     return;
   }
+  const token = await getTokenFromServer()
 
-  const res = await fetch(`http://localhost:7000/manage-events/${user.email}`);
+  const res = await fetch(`http://localhost:7000/manage-events/${user.email}`,{
+    headers:{
+      authorization: `Bearer ${token}`
+    }
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch manage events");

@@ -45,7 +45,7 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
   const createdDate = formatDateTime(event.createAt);
 
   return (
-    <article className="group overflow-hidden rounded-2xl bg-card p-3 shadow-sm border border-border dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-2xl bg-card p-3 shadow-sm border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
       {/* Thumbnail */}
       <div className="relative h-56 overflow-hidden rounded-xl">
@@ -135,7 +135,7 @@ const ManageEventCard = ({ event }: ManageEventCardProps) => {
       </div>
 
       {/* Footer */}
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-border dark:border-gray-700 px-2 pt-4 pb-2">
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-gray-200 dark:border-gray-700 px-2 pt-4 pb-2">
 
         <span
           className={`rounded-full px-3 py-1 text-xs font-semibold ${

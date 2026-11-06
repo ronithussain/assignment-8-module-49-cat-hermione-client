@@ -24,7 +24,7 @@ export default function ThemeToggle() {
       <button
         disabled
         aria-label="Loading theme"
-        className="rounded-full border p-2"
+        className="rounded-full border border-gray-600  p-2"
       >
         <Sun size={20} />
       </button>
@@ -40,8 +40,8 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
       className="
-        rounded-full border p-2
-        hover:bg-gray-100
+        rounded-full border border-gray-300 p-2
+        hover:bg-gray-300
         dark:hover:bg-gray-800
       "
     >

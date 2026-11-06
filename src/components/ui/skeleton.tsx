@@ -16,18 +16,15 @@ const skeletonVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 interface SkeletonProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof skeletonVariants> {}
 
-function Skeleton({
-  className,
-  variant,
-  ...props
-}: SkeletonProps) {
+function Skeleton({ className, variant, ...props }: SkeletonProps) {
   return (
     <div
       data-slot="skeleton"

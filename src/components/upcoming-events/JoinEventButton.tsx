@@ -2,6 +2,7 @@
 import { IEvents } from "@/app/types/type";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import { HeartHandshake, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -21,6 +22,7 @@ const JoinEventButton = ({ event }: JoinEventButtonProps) => {
       toast.error("Please login to join this event");
       return;
     }
+    const token = await getTokenFromClient();
 
     try {
       const { _id, ...eventData } = event; //id mismatch so destructure kore _id bad deya holo
@@ -36,6 +38,7 @@ const JoinEventButton = ({ event }: JoinEventButtonProps) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`
         },
         body: JSON.stringify(joinedUserData),
       });
@@ -50,8 +53,7 @@ const JoinEventButton = ({ event }: JoinEventButtonProps) => {
       console.log(afterSubmitJoinedData);
 
       toast.success("Joined event successfully!");
-      router.push('/joined-event')
-
+      router.push("/joined-event");
     } catch (error) {
       console.error(error);
       toast.error(`Something went wrong!`);

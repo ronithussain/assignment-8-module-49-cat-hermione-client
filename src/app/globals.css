@@ -9,6 +9,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 
+
 /* css custom class for sweetAlert2 */
 /* Main Popup */
 .custom-swal-popup {

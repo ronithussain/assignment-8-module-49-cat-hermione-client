@@ -5,7 +5,7 @@ import Navbar from "@/components/shared/Navbar";
 import { Toaster } from "sonner";
 import Footer from "@/components/shared/Footer";
 import { Suspense } from "react";
-import { Providers } from "@/components/Providers";
+import { Providers } from "@/components/theme/Providers";
 
 const poppins = Poppins({
   variable: "--font-poppins",

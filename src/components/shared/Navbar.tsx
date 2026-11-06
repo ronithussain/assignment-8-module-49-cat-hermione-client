@@ -25,7 +25,7 @@ import {
 
 import { toast } from "sonner";
 import Image from "next/image";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../theme/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/", icon: House },
@@ -62,7 +62,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+    <header className="sticky top-0 z-50 w-full ">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-10">
         {/* Left Side: Logo */}
         {/* Logo + Brand */}
@@ -86,7 +86,10 @@ export default function Navbar() {
           {/* Brand Text */}
           <div className="flex flex-col justify-center hidden sm:block lg:block">
             <h3 className="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white transition-colors group-hover:text-emerald-600 sm:text-xl dark:group-hover:text-emerald-400">
-              Sodila <span className="text-emerald-600 dark:text-emerald-400">Events</span>
+              Sodila{" "}
+              <span className="text-emerald-600 dark:text-emerald-400">
+                Events
+              </span>
             </h3>
 
             <p className="text-[10px] font-medium tracking-wide text-slate-500 dark:text-gray-400 sm:text-xs">
@@ -156,7 +159,7 @@ export default function Navbar() {
 
                   <DropdownMenuContent
                     align="end"
-                    className="w-[280px] px-2 py-4 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-2xl"
+                    className="w-[280px] px-2 py-4 bg-white dark:bg-gray-800 rounded-3xl  border-gray-200 dark:border-gray-700 shadow-2xl"
                   >
                     <DropdownMenuGroup>
                       {/* Profile */}

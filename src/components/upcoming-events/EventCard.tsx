@@ -33,7 +33,7 @@ export default function EventCard({ event }: EventCardProps) {
   const createdDate = formatDateTime(event.createAt);
 
   return (
-    <article className="group overflow-hidden rounded-2xl bg-card p-3 shadow-sm border border-border dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-2xl bg-card p-3 shadow-sm border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
       <div className="relative h-56 overflow-hidden rounded-xl">
         <Image
@@ -103,7 +103,7 @@ export default function EventCard({ event }: EventCardProps) {
         </div>
 
         {/* Footer */}
-        <div className="mt-5 flex items-center justify-between border-t border-border dark:border-gray-700 pt-4">
+        <div className="mt-5 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4">
           <Link
             href={`/upcoming-events/${event._id}`}
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-gray-200 transition-colors hover:text-emerald-600 dark:hover:text-emerald-400"

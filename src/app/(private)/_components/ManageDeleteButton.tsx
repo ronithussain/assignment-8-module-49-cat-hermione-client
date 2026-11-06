@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 interface DeleteEventButtonProps {
   event: IEvents;
@@ -20,11 +21,15 @@ interface DeleteEventButtonProps {
 const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
   const router = useRouter();
   const handleDelete = async () => {
+       const token = await getTokenFromClient()
     try {
       const res = await fetch(
         `http://localhost:7000/upcoming-events/${event._id}`,
         {
           method: "DELETE",
+          headers:{
+            authorization: `Bearer ${token}`
+          }
         },
       );
       const afterDelete = await res.json();
@@ -103,7 +108,7 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
             </div>
 
             {/* Event summary */}
-            <div className="flex items-center gap-3 rounded-xl border border-border dark:border-gray-700 bg-card p-3">
+            <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-3">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground ring-1 ring-border dark:ring-gray-700">
                 <CalendarDays className="size-4" />
               </div>
@@ -120,8 +125,8 @@ const ManageDeleteButton = ({ event }: DeleteEventButtonProps) => {
           </div>
 
           {/* Footer */}
-          <div className="flex flex-col gap-3 border-t border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-4 sm:flex-row sm:justify-end sm:px-7">
-            <AlertDialogCancel className="h-10 p-3 flex-1 rounded-lg border-border dark:border-gray-700 bg-card dark:bg-gray-800 px-5 font-medium text-foreground transition-colors hover:bg-muted dark:hover:bg-gray-700 hover:text-foreground dark:hover:text-white sm:flex-none">
+          <div className="flex flex-col gap-3 border-t border-border bg-muted px-6 py-4 sm:flex-row sm:justify-end sm:px-7">
+            <AlertDialogCancel className="h-10 p-3 flex-1 rounded-lg border-border bg-card px-5 font-medium text-foreground transition-colors hover:bg-muted hover:text-foreground sm:flex-none">
               Cancel
             </AlertDialogCancel>
 

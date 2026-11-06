@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { IJoinedEvent } from "@/app/types/type";
 import EventCard from "@/components/upcoming-events/EventCard";
 import EmptyState from "@/components/shared/EmptyState";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const JoinedEventPage = async () => {
   const session = await auth.api.getSession({
@@ -14,9 +15,14 @@ const JoinedEventPage = async () => {
   if (!user) {
     return;
   }
+  const token = await getTokenFromServer()
+  console.log(token)
 
   const res = await fetch(`http://localhost:7000/joined-events/${user.email}`, {
     //   next: { revalidate: 60 },
+    headers:{
+      authorization: `Bearer ${token}`
+    }
   });
   if (!res.ok) {
     throw new Error("Failed to fetch joined events");

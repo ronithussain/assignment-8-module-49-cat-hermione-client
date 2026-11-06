@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import { Edit } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -63,7 +64,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
       toast.error("Please select a future date.");
       return;
     }
-
+       const token = await getTokenFromClient()
     try {
       setLoading(true);
 
@@ -73,6 +74,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
           },
           body: JSON.stringify(eventData),
         },
@@ -116,20 +118,20 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
           }
         />
 
-        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto border border-border dark:border-gray-700 bg-card p-0 shadow-2xl rounded-2xl">
+        <DialogContent className=" sm:max-w-2xl max-h-[90vh] overflow-y-auto border border-border bg-card p-0 shadow-2xl rounded-2xl">
           {/* Header */}
-          <DialogHeader className="border-b border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-5 sm:px-8">
+          <DialogHeader className="border-b border-border bg-muted px-6 py-5 sm:px-8">
             <div className="flex items-center gap-3">
               <div className="flex size-11 items-center justify-center rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
                 <Edit className="size-5" />
               </div>
 
               <div className="space-y-1">
-                <DialogTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                <DialogTitle className="text-xl font-bold tracking-tight text-foreground">
                   Edit Event
                 </DialogTitle>
 
-                <DialogDescription className="text-sm text-slate-500 dark:text-gray-400">
+                <DialogDescription className="text-sm text-muted-foreground">
                   Update your event information and keep everything up to date.
                 </DialogDescription>
               </div>
@@ -147,7 +149,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="sm:col-span-2 space-y-2">
                   <Label
                     htmlFor="title"
-                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                    className="text-sm font-semibold text-foreground"
                   >
                     Event Title
                   </Label>
@@ -159,7 +161,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.title}
                     placeholder="Winter Clothes Distribution"
                     required
-                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 transition-all focus-visible:bg-background focus-visible:ring-red-500/20"
+                    className="h-11 rounded-lg border-input bg-background focus-visible:ring-red-500/20"
                   />
                 </div>
 
@@ -167,7 +169,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="location"
-                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                    className="text-sm font-semibold text-foreground"
                   >
                     Location
                   </Label>
@@ -179,7 +181,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.location}
                     placeholder="Mirpur, Dhaka"
                     required
-                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
+                    className="h-11 rounded-lg border-input bg-background"
                   />
                 </div>
 
@@ -187,13 +189,13 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="eventType"
-                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                    className="text-sm font-semibold text-foreground"
                   >
                     Event Type
                   </Label>
 
                   <Select
-                    className="h-11 w-full rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
+                    className="h-11 w-full rounded-lg border-input bg-background"
                     id="eventType"
                     name="eventType"
                     required
@@ -216,7 +218,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="sm:col-span-2 space-y-2">
                   <Label
                     htmlFor="thumbnail"
-                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                    className="text-sm font-semibold text-foreground"
                   >
                     Thumbnail Image URL
                   </Label>
@@ -228,7 +230,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                     defaultValue={event?.thumbnail}
                     placeholder="https://example.com/image.jpg"
                     required
-                    className="h-11 rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus-visible:bg-background"
+                    className="h-11 rounded-lg border-input bg-background"
                   />
                 </div>
 
@@ -236,7 +238,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                 <div className="space-y-2">
                   <Label
                     htmlFor="eventDate"
-                    className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                    className="text-sm font-semibold text-foreground"
                   >
                     Event Date
                   </Label>
@@ -256,7 +258,7 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
               <div className="space-y-2">
                 <Label
                   htmlFor="description"
-                  className="text-sm font-semibold text-slate-700 dark:text-gray-300"
+                  className="text-sm font-semibold text-foreground"
                 >
                   Event Description
                 </Label>
@@ -268,18 +270,18 @@ const ManageEditButton = ({ event }: ManageEditButtonProps) => {
                   placeholder="Describe your event, its purpose, and how people can participate..."
                   required
                   rows={5}
-                  className="resize-none rounded-lg border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 leading-relaxed focus-visible:bg-background"
+                  className="resize-none rounded-lg border-input bg-background leading-relaxed"
                 />
               </div>
             </FieldGroup>
 
             {/* Footer */}
-            <DialogFooter className="flex flex-col-reverse gap-3 border-t border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-4 sm:flex-row sm:px-8">
+            <DialogFooter className="flex flex-col-reverse gap-3 border-t border-border bg-muted px-6 py-4 sm:flex-row sm:px-8">
               <DialogClose
                 render={
                   <Button
                     variant="outline"
-                    className="h-11 rounded-lg border-border dark:border-gray-700 px-6 font-medium hover:bg-muted dark:hover:bg-gray-800"
+                    className="h-11 rounded-lg border-border px-6 font-medium hover:bg-muted"
                   >
                     Cancel
                   </Button>

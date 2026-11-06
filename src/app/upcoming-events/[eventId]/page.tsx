@@ -30,7 +30,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
           ← Back to events
         </Link>
 
-        <article className="rounded-2xl border border-border dark:border-gray-700 bg-card p-0 shadow-sm overflow-hidden">
+        <article className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-card p-0 shadow-sm overflow-hidden">
           {/* Thumbnail */}
           <div className="relative h-64 overflow-hidden">
             <Image
@@ -106,7 +106,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
               </div>
             </div>
 
-            <div className="border-t border-border dark:border-gray-700 pt-6">
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
               <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Description
               </h2>
@@ -115,7 +115,7 @@ const EventDetailPage = async ({ params }: IParamsProps) => {
               </p>
             </div>
 
-            <div className="border-t border-border dark:border-gray-700 pt-6">
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
               <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">
                 Organizer
               </h2>

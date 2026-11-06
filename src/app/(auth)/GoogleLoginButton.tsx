@@ -3,29 +3,28 @@ import { signIn } from "@/lib/auth-client";
 import { toast } from "sonner";
 
 const GoogleLoginButton = () => {
-     const handleSocialLogin = async() => {
-    const {data, error} = await signIn.social({
-      provider: 'google',
-      callbackURL: '/'
-    })
-    if(data){
-      toast.success('Google signin successfully')
-    }else{
-      toast.error( `${error.message}` || 'Google signin is Failed! Please try again leter!')
+  const handleSocialLogin = async () => {
+    const { data, error } = await signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+    if (data) {
+      toast.success("Google signin successfully");
+    } else {
+      toast.error(
+        `${error.message}` ||
+          "Google signin is Failed! Please try again leter!",
+      );
     }
-  }
+  };
   return (
     <Button
-    onClick={handleSocialLogin}
+      onClick={handleSocialLogin}
       type="button"
       variant="outline"
       className="w-full flex border border-gray-200 outline-none items-center justify-center gap-2 text-sm"
     >
-      <svg
-        viewBox="0 0 48 48"
-        className="size-5"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 48 48" className="size-5" aria-hidden="true">
         <path
           fill="#EA4335"
           d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"

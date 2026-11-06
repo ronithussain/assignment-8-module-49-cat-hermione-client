@@ -19,6 +19,7 @@ import {
   Plus,
   ArrowLeft,
 } from "lucide-react";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 const EVENT_TYPES = [
   "Cleanup",
   "Plantation",
@@ -30,7 +31,7 @@ const EVENT_TYPES = [
   "Other",
 ];
 
-// আজকের তারিখ "YYYY-MM-DD" ফরম্যাটে
+
 const getToday = () =>
   new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Dhaka" });
 
@@ -50,13 +51,11 @@ const CreateEventForm = () => {
       return;
     }
 
-    // ফর্মের সব ডাটা একটা অবজেক্টে, ফাঁকা জায়গা কেটে
     const formData = new FormData(form);
     const eventData = Object.fromEntries(formData.entries());
 
     console.log(eventData);
 
-    // অতীতের তারিখ আটকানো (আজকের তারিখ চলবে)
     if (eventData.eventDate < getToday()) {
       toast.error("Past dates are not allowed.");
       return;
@@ -68,17 +67,21 @@ const CreateEventForm = () => {
       creatorName: user.name,
       creatorImage: user.image,
     };
+    const token = await getTokenFromClient();
 
     try {
       setLoading(true);
 
       const res = await fetch("http://localhost:7000/events", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(event),
       });
       const result = await res.json();
-      console.log(result, "the create event data is...");
+      // console.log(result, "the create event data is...");
 
       if (!res.ok) {
         toast.error(result.message || "Failed to create event");
@@ -92,9 +95,6 @@ const CreateEventForm = () => {
       toast.error("Something went wrong!");
     }
   };
-
-  // Keep your existing handleCreateEvent, loading,
-  // EVENT_TYPES and getToday functions.
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -118,16 +118,18 @@ const CreateEventForm = () => {
       {/* Form Card */}
       <form
         onSubmit={handleCreateEvent}
-        className="overflow-hidden rounded-3xl border border-border dark:border-gray-700 bg-card shadow-xl shadow-black/20"
+        className="overflow-hidden rounded-3xl border-gray-200 border-border dark:border-gray-700 bg-card shadow-xl shadow-black/20"
       >
         {/* Form Header */}
-        <div className="flex items-center gap-4 border-b border-border dark:border-gray-700 bg-gradient-to-r from-emerald-50 dark:from-emerald-900/20 to-teal-50 dark:to-teal-900/20 px-6 py-6 sm:px-8">
+        <div className="flex items-center gap-4 border-b border-gray-200 border-border dark:border-gray-700 bg-gradient-to-r from-emerald-50 dark:from-emerald-900/20 to-teal-50 dark:to-teal-900/20 px-6 py-6 sm:px-8">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20">
             <Plus size={25} />
           </div>
 
           <div>
-            <h3 className="font-bold text-slate-900 dark:text-white">Event Information</h3>
+            <h3 className="font-bold text-slate-900 dark:text-white">
+              Event Information
+            </h3>
             <p className="mt-1 text-xs text-slate-500 dark:text-gray-400">
               Provide accurate information about your event.
             </p>
@@ -166,7 +168,7 @@ const CreateEventForm = () => {
                   maxLength={100}
                   placeholder="e.g. Winter Clothes Distribution"
                   required
-                  className="h-12 rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 transition-all focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                  className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 transition-all focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
                 />
                 <p className="text-xs text-slate-400 dark:text-gray-500">
                   Choose a clear and meaningful event title.
@@ -188,7 +190,7 @@ const CreateEventForm = () => {
                     maxLength={150}
                     placeholder="Mirpur, Dhaka"
                     required
-                    className="h-12 rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                    className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
                   />
                 </div>
               </div>
@@ -205,7 +207,7 @@ const CreateEventForm = () => {
                     name="eventType"
                     required
                     defaultValue=""
-                    className="h-12 rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                    className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
                   >
                     <option value="" disabled>
                       Select a category
@@ -250,7 +252,7 @@ const CreateEventForm = () => {
                   type="url"
                   placeholder="https://example.com/event-image.jpg"
                   required
-                  className="h-12 rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                  className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 pl-10 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
                 />
               </div>
 
@@ -286,7 +288,7 @@ const CreateEventForm = () => {
                 type="date"
                 min={getToday()}
                 required
-                className="h-12 rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
               />
               <p className="text-xs text-slate-400 dark:text-gray-500">
                 Select a future date for your community event.
@@ -322,7 +324,7 @@ const CreateEventForm = () => {
                 maxLength={1000}
                 required
                 rows={6}
-                className="resize-y rounded-xl border-border dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 leading-6 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
+                className="resize-y rounded-xl border-gray-200 dark:border-gray-700 bg-input/50 dark:bg-gray-800/30 leading-6 focus:bg-background focus:ring-4 focus:ring-emerald-500/10"
               />
               <p className="text-xs text-slate-400 dark:text-gray-500">
                 Write at least 20 characters to describe your event.
@@ -332,11 +334,11 @@ const CreateEventForm = () => {
         </div>
 
         {/* Footer Actions Button functionality*/}
-        <div className="flex flex-col-reverse gap-3 border-t border-border dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-6 sm:flex-row sm:justify-between sm:px-8">
+        <div className="flex flex-col-reverse gap-3 border-t border-gray-200 dark:border-gray-700 bg-muted/50 dark:bg-gray-800/30 px-6 py-6 sm:flex-row sm:justify-between sm:px-8">
           <Button
             type="reset"
             variant="outline"
-            className="h-12 rounded-xl border-border dark:border-gray-700 bg-card dark:bg-gray-800 px-6 text-slate-600 dark:text-gray-300 transition-all hover:border-red-200 dark:hover:border-red-800 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
+            className="h-12 rounded-xl border-gray-200 dark:border-gray-700 bg-card dark:bg-gray-800 px-6 text-slate-600 dark:text-gray-300 transition-all hover:border-red-200 dark:hover:border-red-800 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Cancel
