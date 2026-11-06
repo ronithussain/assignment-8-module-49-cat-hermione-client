@@ -1,11 +1,12 @@
 import Banner from "@/components/home/Banner";
-import Feature from "@/components/home/Feature";
-import NewsLater from "@/components/home/NewsLater";
 import Statistick from "@/components/home/Statistick";
+import RecentUpcomingEvents from "@/components/home/RecentUpcomingEvents";
+import Feature from "@/components/home/Feature";
+import PastEvents from "@/components/home/PastEvents";
+import NewsLater from "@/components/home/NewsLater";
+
 
 import { IEvents } from "@/app/types/type";
-import RecentUpcomingEvents from "@/components/home/RecentUpcomingEvents";
-import PastEvents from "@/components/home/PastEvents";
 
 const getPastEventsFetch = async (): Promise<IEvents[]> => {
   const res = await fetch("http://localhost:7000/past-events", {
@@ -30,7 +31,6 @@ async function getRecentEvents(): Promise<IEvents[]> {
 
   const data = await res.json();
 
-  // console.log(data, "upcoming 6 data");
   return data;
 }
 
@@ -39,7 +39,8 @@ export default async function Home() {
   const pastEvents = await getPastEventsFetch();
 
   return (
-    <div>
+    <div className="relative overflow-hidden">
+
       <Banner />
       <Statistick />
 

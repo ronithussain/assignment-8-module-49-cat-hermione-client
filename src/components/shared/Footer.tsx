@@ -77,9 +77,21 @@ const CONTACT_ITEMS = [
 
 const SOCIAL_LINKS = [
   { icon: <X className="size-5" />, href: "https://x.com", label: "X" },
-  { icon: <Share2 className="size-5" />, href: "https://facebook.com", label: "Facebook" },
-  { icon: <LinkIcon className="size-5" />, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: <Globe className="size-5" />, href: "https://instagram.com", label: "Instagram" },
+  {
+    icon: <Share2 className="size-5" />,
+    href: "https://facebook.com",
+    label: "Facebook",
+  },
+  {
+    icon: <LinkIcon className="size-5" />,
+    href: "https://linkedin.com",
+    label: "LinkedIn",
+  },
+  {
+    icon: <Globe className="size-5" />,
+    href: "https://instagram.com",
+    label: "Instagram",
+  },
 ];
 
 const LEGAL_LINKS = [
@@ -93,10 +105,12 @@ export default function Footer() {
   const year = typeof window !== "undefined" ? new Date().getFullYear() : 2026;
 
   return (
-    <footer className="bg-white/50 dark:bg-slate-900 border-t   border-gray-300 dark:border-gray-500 text-slate-300">
+    <footer className="bg-[#E3FCEF] dark:bg-slate-900 border-t   border-gray-300 dark:border-gray-500 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top: newsletter banner (news later section) */}
         <div
+          data-aos="fade-up"
+          data-aos-duration="900"
           className="relative overflow-hidden rounded-2xl bg-slate-700  dark:bg-slate-800 border  border-gray-200 dark:border-gray-700 p-8 sm:p-12 lg:p-16 mb-12 sm:mb-16 lg:mb-20"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -121,8 +135,8 @@ export default function Footer() {
                 Stay in touch with us.
               </h2>
               <p className="text-sm sm:text-base leading-relaxed text-slate-400 max-w-md">
-                We will send you tips and tricks, news and updates, discounts and
-                deals, plus we promise not to spam your inbox.
+                We will send you tips and tricks, news and updates, discounts
+                and deals, plus we promise not to spam your inbox.
               </p>
             </div>
 

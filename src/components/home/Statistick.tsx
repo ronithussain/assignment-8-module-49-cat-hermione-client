@@ -40,22 +40,27 @@ const impactStats = [
 export default function Statistick() {
   return (
     <section className="relative overflow-hidden bg-background dark:bg-gray-900 py-20 sm:py-24 lg:py-28">
-      {/* Background decoration */}
-      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-emerald-100/40 dark:bg-emerald-900/20 blur-3xl" />
+      {/* Background Decoration */}
+      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-emerald-100/40 blur-3xl dark:bg-emerald-900/20" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
         {/* Section Header */}
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div
+          data-aos="fade-right"
+          data-aos-duration="900"
+          className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        >
           <div>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-100 dark:border-emerald-800/30 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700 dark:border-emerald-800/30 dark:bg-emerald-900/20 dark:text-emerald-400">
               <HeartHandshake size={16} />
               Our Community Impact
             </div>
 
             <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
               Together, we create
-              <span className="text-emerald-600 dark:text-emerald-400"> meaningful change.</span>
+              <span className="text-emerald-600 dark:text-emerald-400">
+                {" "}meaningful change.
+              </span>
             </h2>
           </div>
 
@@ -67,12 +72,14 @@ export default function Statistick() {
 
         {/* Main Grid */}
         <div className="grid gap-6 lg:grid-cols-12">
-
           {/* Left: Statistics */}
           <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
-
             {/* Featured Stat */}
-            <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-3xl bg-emerald-600 p-7 text-white shadow-xl shadow-emerald-600/10 sm:col-span-2 sm:flex-row sm:items-center sm:p-10">
+            <div
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-3xl bg-emerald-600 p-7 text-white shadow-xl shadow-emerald-600/10 sm:col-span-2 sm:flex-row sm:items-center sm:p-10"
+            >
               <div className="relative z-10">
                 <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-white/15">
                   <HandHeart size={26} />
@@ -104,27 +111,32 @@ export default function Statistick() {
                 </div>
               </div>
 
-              {/* Decorative circle */}
+              {/* Decorative Circle */}
               <div className="absolute -bottom-20 -right-20 size-64 rounded-full border border-white/10" />
             </div>
 
-            {/* Small Stats */}
-            {impactStats.slice(1).map((stat) => {
+            {/* Small Statistics */}
+            {impactStats.slice(1).map((stat, index) => {
               const Icon = stat.icon;
 
               return (
                 <div
                   key={stat.label}
-                  className="group rounded-3xl border border-gray-200 dark:border-gray-700 bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 dark:hover:border-emerald-900/50 hover:bg-card dark:hover:bg-gray-800 hover:shadow-xl hover:shadow-black/10"
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  data-aos-delay={index * 150}
+                  className="group rounded-3xl border border-gray-200 bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-black/10 dark:border-gray-700 dark:hover:border-emerald-900/50 dark:hover:bg-gray-800"
                 >
                   <div className="flex items-center justify-between">
-                    <div className={`flex size-12 items-center justify-center rounded-2xl ${stat.color} dark:${stat.color.replace('bg-', 'bg-gray-900/')}`}>
+                    <div
+                      className={`flex size-12 items-center justify-center rounded-2xl ${stat.color}`}
+                    >
                       <Icon size={24} />
                     </div>
 
                     <ArrowUpRight
                       size={20}
-                      className="text-slate-300 dark:text-gray-400 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+                      className="text-slate-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-emerald-600 dark:text-gray-400 dark:group-hover:text-emerald-400"
                     />
                   </div>
 
@@ -146,9 +158,12 @@ export default function Statistick() {
 
           {/* Right: Image & CTA */}
           <div className="flex flex-col gap-5 lg:col-span-5">
-
             {/* Image Card */}
-            <div className="group relative min-h-[300px] flex-1 overflow-hidden rounded-3xl sm:min-h-[350px]">
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              className="group relative min-h-[300px] flex-1 overflow-hidden rounded-3xl sm:min-h-[350px]"
+            >
               <Image
                 src="/img2.jpg"
                 alt="Volunteers working together for their community"
@@ -175,7 +190,12 @@ export default function Statistick() {
             </div>
 
             {/* CTA Card */}
-            <div className="flex flex-col justify-between gap-5 rounded-3xl border border-emerald-100 dark:border-emerald-800/30 bg-emerald-50/70 dark:bg-emerald-900/20 p-6 sm:flex-row sm:items-center sm:p-8">
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="900"
+              data-aos-delay="150"
+              className="flex flex-col justify-between gap-5 rounded-3xl border border-emerald-100 bg-emerald-50/70 p-6 sm:flex-row sm:items-center sm:p-8 dark:border-emerald-800/30 dark:bg-emerald-900/20"
+            >
               <div>
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                   Be part of the change
@@ -194,25 +214,27 @@ export default function Statistick() {
                 <ArrowRight size={18} />
               </AnimatedButton>
             </div>
-
           </div>
         </div>
 
         {/* Bottom Note */}
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 dark:border-gray-700 pt-6 sm:flex-row">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="800"
+          className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-6 sm:flex-row dark:border-gray-700"
+        >
           <p className="text-sm text-slate-500 dark:text-gray-400">
             Every contribution matters. Every volunteer makes a difference.
           </p>
 
           <Link
             href="/upcoming-events"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 transition-colors hover:text-emerald-900 dark:hover:text-emerald-300"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-900 dark:text-emerald-400 dark:hover:text-emerald-300"
           >
             Learn more about our mission
             <ArrowRight size={16} />
           </Link>
         </div>
-
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import Footer from "@/components/shared/Footer";
 import { Suspense } from "react";
 import { Providers } from "@/components/theme/Providers";
+import AosProvider from "@/components/shared/AosProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Suspense fallback={<div className="h-16" />}>
             <Navbar />
           </Suspense>
+            <AosProvider />
           <main>{children}</main>
           <Footer />
           <Toaster

@@ -98,7 +98,7 @@ export default function Navbar() {
     return pathname === href || pathname.startsWith(`${href}/`);
   };
   return (
-    <header className="sticky top-0 z-50 w-full ">
+    <header className="sticky top-0 z-50 w-full  border-b border-white/10 bg-white/70 shadow-lg shadow-black/5 backdrop-blur-md dark:bg-black/40">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8 lg:px-10">
         {/* Left Side: Logo */}
         {/* Logo + Brand */}
@@ -257,7 +257,7 @@ export default function Navbar() {
 
                 <Link
                   href="/signup"
-                  className="whitespace-nowrap rounded-md bg-[#15A1BF] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
+                  className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
                 >
                   Sign Up
                 </Link>

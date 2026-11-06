@@ -65,7 +65,8 @@ export default function Feature() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div data-aos="fade-up"
+          data-aos-duration="900"  className="mx-auto max-w-3xl text-center">
 
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 dark:border-emerald-800/30 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 shadow-sm">
             <Users size={16} />
@@ -88,7 +89,8 @@ export default function Feature() {
         </div>
 
         {/* Feature Cards */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+        <div data-aos="fade-left"
+          data-aos-duration="900"  className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
 
           {features.map((feature) => {
             const Icon = feature.icon;
@@ -142,7 +144,8 @@ export default function Feature() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 rounded-3xl border border-emerald-100 dark:border-emerald-800/30 bg-card p-6 text-center shadow-sm sm:flex-row sm:p-8 sm:text-left">
+        <div data-aos="fade-up"
+          data-aos-duration="900"  className="mt-12 flex flex-col items-center justify-center gap-4 rounded-3xl border border-emerald-100 dark:border-emerald-800/30 bg-card p-6 text-center shadow-sm sm:flex-row sm:p-8 sm:text-left">
 
           <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400">
             <HeartHandshake size={25} />

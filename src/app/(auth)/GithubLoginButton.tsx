@@ -6,7 +6,7 @@ const GithubLoginButton = () => {
     <Button
       type="button"
       variant="outline"
-      className=" border border-gray-200 outline-none w-full flex items-center justify-center gap-2 text-sm"
+      className=" border border-gray-200 dark:border-gray-700 outline-none w-full flex items-center justify-center gap-2 text-sm"
     >
       <svg
         viewBox="0 0 24 24"

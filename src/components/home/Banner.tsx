@@ -1,24 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import AnimatedButton from "../shared/AmimatedButton";
 
 export default function Banner() {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 80,
-      easing: "ease-out-quart",
-    });
-  }, []);
-
   return (
     <section className="relative w-full overflow-hidden min-h-screen bg-slate-900">
       {/* Decorative background glows */}
@@ -46,8 +31,6 @@ export default function Banner() {
             {/* Left: Content */}
             <div
               className="lg:col-span-7 text-center lg:text-left"
-              data-aos="fade-up"
-              data-aos-duration="1000"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-6">
                 Hope for Every Community
@@ -77,9 +60,6 @@ export default function Banner() {
 
             {/* Right: Impact stats */}
             <div
-              data-aos="fade-up"
-              data-aos-delay="150"
-              data-aos-duration="1000"
               className="lg:col-span-5 lg:flex lg:justify-end"
             >
               <div className="max-w-sm sm:max-w-[440px] mx-auto">

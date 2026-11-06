@@ -35,7 +35,9 @@ export default function RecentUpcomingEvents({
     <section className="bg-background dark:bg-gray-900 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Heading */}
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <div data-aos="fade-up"
+          data-aos-duration="900" 
+          className="mx-auto mb-12 max-w-2xl text-center">
           <span className="inline-block rounded-full bg-emerald-100 dark:bg-emerald-900/20 px-4 py-1.5 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
             Make an Impact
           </span>
@@ -52,7 +54,8 @@ export default function RecentUpcomingEvents({
 
         {/* Event Cards */}
         {recentEvents.length > 0 ? (
-         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+         <div data-aos="fade-up"
+          data-aos-duration="900"  className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {recentEvents.slice(0, 8).map((event) => (
               <EventCard key={event._id} event={event} />
             ))}
@@ -70,7 +73,8 @@ export default function RecentUpcomingEvents({
         )}
 
         {/* View All */}
-        <div className="mt-10 text-center">
+        <div data-aos="fade-up"
+          data-aos-duration="900"  className="mt-10 text-center">
           <AnimatedButton
             href="/upcoming-events"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 font-semibold text-white transition-all hover:bg-emerald-700 hover:shadow-lg"

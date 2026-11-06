@@ -17,7 +17,7 @@ import GithubLoginButton from "../GithubLoginButton";
 import { useState } from "react";
 
 const inputStyle =
-  "flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50";
+  "flex h-10 w-full rounded-lg border border-gray-200 dark:border-gray-700 border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -384,7 +384,7 @@ const SignUpPage = () => {
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground text-gray-700">
                 At least 8 characters
               </p>
             </div>
@@ -457,7 +457,7 @@ const SignUpPage = () => {
 
             <div className="relative mt-2 mb-6">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-border" />
+                <span className="w-full border-t border-gray-300 dark:border-gray-700" />
               </div>
               <span className="relative flex justify-center text-xs uppercase tracking-wider bg-card dark:bg-gray-800 px-2 text-slate-400">
                 Or

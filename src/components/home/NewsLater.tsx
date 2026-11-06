@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 
-import {
-  Mail,
-  Megaphone,
-  Heart,
-  MessageCircle,
-  AtSign,
-} from "lucide-react";
+import { Mail, Megaphone, Heart, MessageCircle, AtSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function NewsLater() {
@@ -25,24 +19,30 @@ export default function NewsLater() {
   return (
     <section className="py-12 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: content */}
-          <div className="space-y-6 lg:space-y-8">
+          <div data-aos="fade-right"
+          data-aos-duration="900"  className="space-y-6 lg:space-y-8">
             <div className="flex items-start gap-3">
               <div className="h-10 w-px bg-teal-600 dark:bg-teal-500 shrink-0" />
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
                   Subscribe to our{" "}
-                  <span className="block text-teal-600 dark:text-teal-400">NEWSLETTER</span>
+                  <span className="block text-teal-600 dark:text-teal-400">
+                    NEWSLETTER
+                  </span>
                 </h2>
               </div>
             </div>
 
             <p className="text-sm sm:text-base text-slate-600 dark:text-gray-400 leading-relaxed max-w-md lg:max-w-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna
+              Stay connected with Social Development Events Platform and be
+              part of positive change in your community. Discover upcoming
+              events, join meaningful initiatives, and contribute to activities
+              like charity, food distribution, tree plantation, and community
+              cleanup. Together, we can make our communities better, one small
+              action at a time. Subscribe to our newsletter for the latest
+              events, updates, and opportunities to make a difference!
             </p>
 
             <form
@@ -74,9 +74,8 @@ export default function NewsLater() {
           </div>
 
           {/* Right: SVG illustration (lucide-react) */}
-          <div
-            className="relative hidden lg:block h-[400px] w-full flex items-center justify-center"
-          >
+          <div data-aos="fade-left"
+          data-aos-duration="900"  className="relative hidden lg:block h-[400px] w-full flex items-center justify-center">
             {/* Background leaf shapes (svg circles/ellipses styled with tailwind) */}
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-teal-100 dark:bg-teal-900/20 rounded-full blur-3xl opacity-60" />
             <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-teal-200 dark:bg-teal-900/10 rounded-full blur-3xl opacity-60" />
@@ -111,12 +110,8 @@ export default function NewsLater() {
           <div className="lg:hidden flex justify-center pb-4">
             <div className="relative w-32 h-32">
               <Mail className="absolute size-24 text-teal-600/20 dark:text-teal-500/20" />
-              <Heart
-                className="absolute top-2 right-2 size-8 text-teal-600 dark:text-teal-400"
-              />
-              <AtSign
-                className="absolute bottom-2 left-2 size-8 text-teal-600 dark:text-teal-400"
-              />
+              <Heart className="absolute top-2 right-2 size-8 text-teal-600 dark:text-teal-400" />
+              <AtSign className="absolute bottom-2 left-2 size-8 text-teal-600 dark:text-teal-400" />
             </div>
           </div>
         </div>

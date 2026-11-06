@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌱 Kindora — Social Development Events Platform
 
-## Getting Started
+**Building stronger communities through meaningful actions.**
 
-First, run the development server:
+Kindora is a community-driven social development platform where people can create, discover, join, and manage local community service events. It encourages individuals to participate in social activities such as donation campaigns, tree plantation, community cleanup, winter relief, and more.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔗 Live Website
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Live Site:** [Your Live Website URL](https://your-live-site-url.vercel.app)
+- **Client Repository:** [GitHub Client Repository](https://github.com/your-username/your-client-repo)
+- **Server Repository:** [GitHub Server Repository](https://github.com/your-username/your-server-repo)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Features
 
-## Learn More
+- **Authentication System:** Secure email/password authentication and social login using Better Auth.
+- **Create Events:** Authenticated users can create community service events with relevant information.
+- **Upcoming Events:** Explore upcoming social development events dynamically fetched from the database.
+- **Event Details:** View complete information about individual events.
+- **Join Events:** Logged-in users can participate in community events.
+- **Joined Events:** Track events joined by the authenticated user.
+- **Manage Events:** Update and delete events created by the user.
+- **Protected Routes:** Restrict private pages and sensitive operations to authenticated users.
+- **Event Date Validation:** Prevent users from creating events with past dates.
+- **Search & Filter:** Find events based on relevant information and categories.
+- **Responsive Design:** Optimized for mobile, tablet, and desktop devices.
+- **Dark & Light Theme:** Switch between light and dark modes.
+- **Loading Skeletons:** Improve the user experience during data loading.
+- **Toast Notifications:** Display user-friendly success and error messages.
+- **Modern UI:** Clean interface with reusable components and smooth animations.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- Lucide React
+- Sonner
+- AOS Animation
+- next-themes
 
-## Deploy on Vercel
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- MongoDB Node.js Driver
+- JSON Web Token (JWT)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Authentication
+- Better Auth
+- MongoDB Adapter
+- Google Authentication
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tools & Platforms
+- Git
+- GitHub
+- Vercel
+- Render
+- Postman
+
+---
+
+## 📌 Project Objectives
+
+- Encourage community participation in social development activities.
+- Make it easier to discover and join local service events.
+- Provide a platform for organizing community initiatives.
+- Help users manage their created and joined events.
+- Promote social awareness and community engagement.
+
+---
+
+
+
+
+
+*The folder structure may vary depending on the implementation.*
+
+---
+
+## 🔐 Security & Authorization
+
+- Authentication is handled using Better Auth.
+- JWT validation is implemented for protected API endpoints.
+- Private routes require authentication.
+- Users can only manage their own events.
+- Event ownership is validated on the server.
+- Sensitive environment variables are not exposed publicly.
+
+---
+
+## 🌍 Deployment
+
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Database:** MongoDB Atlas
+
+Make sure all production environment variables are configured before deployment.
+
+---
+
+## 🎯 Future Improvements
+
+- Event participation limits.
+- Event organizer profiles.
+- Email notifications.
+- Event reviews and ratings.
+- Advanced search and filtering.
+- Interactive event location maps.
+
+---
+
+## 👨‍💻 Developer
+
+Developed with ❤️ to encourage social development and community engagement.
+
+**If you find this project helpful, consider giving it a ⭐ on GitHub!**
+
+---
+
+### License
+
+This project was developed for educational purposes.

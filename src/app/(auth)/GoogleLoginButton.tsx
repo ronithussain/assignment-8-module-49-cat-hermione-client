@@ -22,7 +22,7 @@ const GoogleLoginButton = () => {
       onClick={handleSocialLogin}
       type="button"
       variant="outline"
-      className="w-full flex border border-gray-200 outline-none items-center justify-center gap-2 text-sm"
+      className="w-full flex border border-gray-200 dark:border-gray-700 outline-none items-center justify-center gap-2 text-sm"
     >
       <svg viewBox="0 0 48 48" className="size-5" aria-hidden="true">
         <path
