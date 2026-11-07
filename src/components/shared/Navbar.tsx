@@ -164,7 +164,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <ThemeSelector />
           </nav>
-          <div className="flex border-l-4 rounded-bl-2xl rounded-tl-2xl border-[#0a835a] ml-4 shrink-0 items-center justify-end gap-3 ">
+          <div className="flex border-l-4 pl-2 rounded-bl-2xl rounded-tl-2xl border-[#0a835a] ml-2 shrink-0 items-center justify-end gap-0 ">
             {isPending ? (
               <div className="flex items-center gap-3">
                 <div className="size-9 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
