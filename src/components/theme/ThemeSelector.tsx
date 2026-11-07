@@ -29,7 +29,7 @@ export default function ThemeSelector() {
       <div
         className="
           group flex items-center 
-           pr-2 sm:pr-3 py-2
+           pr-3 py-2
        
           transition-all duration-300
           
