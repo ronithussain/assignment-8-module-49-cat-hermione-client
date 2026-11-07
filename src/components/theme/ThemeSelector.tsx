@@ -28,8 +28,8 @@ export default function ThemeSelector() {
     <div className="relative inline-flex items-center">
       <div
         className="
-          group flex items-center gap-2
-           pr-3 py-2
+          group flex items-center 
+           pr-2 sm:pr-3 py-2
        
           transition-all duration-300
           
@@ -53,7 +53,7 @@ export default function ThemeSelector() {
           aria-label="Select theme"
           className="
             cursor-pointer appearance-none
-            bg-transparent pr-5
+            bg-transparent dark:bg-slate-900 pr-5
             text-sm font-medium
             text-foreground
             outline-none

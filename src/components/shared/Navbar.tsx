@@ -106,7 +106,7 @@ export default function Navbar() {
           className="group inline-flex items-center gap-3"
         >
           {/* Logo */}
-          <div className="flex shrink-0 items-center justify-center rounded-xl bg-emerald-50 p-1.5 transition-transform duration-300 group-hover:scale-105 dark:bg-emerald-900/20">
+          <div className="flex shrink-0 items-center justify-center rounded-xl bg-emerald-50 p-1 transition-transform duration-300 group-hover:scale-105 dark:bg-emerald-900/20">
             <Image
               src="/logo.png"
               alt="Sodila Events logo"
