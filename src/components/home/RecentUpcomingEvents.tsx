@@ -38,7 +38,7 @@ export default function RecentUpcomingEvents({
         {/* Event Cards */}
         {recentEvents.length > 0 ? (
          <div data-aos="fade-up"
-          data-aos-duration="900"  className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          data-aos-duration="900"  className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {recentEvents.slice(0, 8).map((event) => (
               <EventCard key={event._id} event={event} />
             ))}

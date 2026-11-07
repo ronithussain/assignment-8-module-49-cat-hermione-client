@@ -1,31 +1,13 @@
 import { IEvents } from "@/app/types/type";
-import { ArrowUpRight, CalendarDays, Clock, MapPin } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { CalendarDays, } from "lucide-react";
+
 import EventCard from "../upcoming-events/EventCard";
 
 interface IPastEventProps {
   pastEvents: IEvents[];
 }
 
-function formatDateTime(date: string) {
-  const eventDate = new Date(date);
 
-  return {
-    date: eventDate.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      timeZone: "Asia/Dhaka",
-    }),
-
-    time: eventDate.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZone: "Asia/Dhaka",
-    }),
-  };
-}
 
 const PastEvents = ({ pastEvents }: IPastEventProps) => {
   return (
@@ -52,7 +34,7 @@ const PastEvents = ({ pastEvents }: IPastEventProps) => {
           {/* Event Cards */}
           {pastEvents.length > 0 ? (
             <div data-aos="fade-right"
-          data-aos-duration="900"  className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          data-aos-duration="900"  className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {pastEvents.slice(0, 8).map((event) => (
               <EventCard key={event._id} event={event} />
             ))}
