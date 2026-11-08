@@ -11,6 +11,7 @@ import {
   Settings,
   CircleHelp,
   Mail,
+  ArrowRight,
 } from "lucide-react";
 
 import { useSession, signOut } from "@/lib/auth-client";
@@ -179,7 +180,7 @@ export default function Navbar() {
                     className="flex shrink-0 items-center justify-center rounded-full outline-none border-2 border-gray-200 dark:border-gray-700 ring-offset-2 transition hover:ring-2 hover:ring-[#15A1BF]/40 focus-visible:ring-2 focus-visible:ring-[#15A1BF]"
                     aria-label="Open user menu"
                   >
-                    <Avatar className="size-9">
+                    <Avatar className="size-9 border-none">
                       <AvatarImage
                         referrerPolicy="no-referrer"
                         src={user.image || undefined}
@@ -238,21 +239,30 @@ export default function Navbar() {
                 </DropdownMenu>
 
                 {/* Separate Logout Button */}
-                <button
+                {/* <button
                   onClick={handleSignOut}
                   className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
                 >
                   Logout
-                </button>
+                </button> */}
               </>
             ) : (
               /* Logged-out User */
-              <div className="">
+              <div>
                 <Link
                   href="/login"
-                  className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
+                  className="group relative inline-flex items-center justify-center gap-2 
+  overflow-hidden rounded-full bg-[#009966] px-5 py-2.5 
+  text-sm font-semibold text-white shadow-md shadow-[#009966]/20 
+  transition-all duration-300 
+  hover:-translate-y-0.5 hover:bg-[#00855a] hover:shadow-lg hover:shadow-[#009966]/30
+  active:translate-y-0"
                 >
                   Login
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
                 </Link>
 
                 {/* <Link

@@ -65,7 +65,7 @@ export default function ThemeSelector() {
 
         <ChevronDown
           className="
-            pointer-events-none absolute right-6
+            pointer-events-none absolute right-4
             h-4 w-4 text-muted-foreground
             transition-transform duration-300
             group-hover:translate-y-0.5
