@@ -29,8 +29,7 @@ export default function ThemeSelector() {
       <div
         className="
           group flex items-center 
-           pr-3 py-2
-       
+           pr-3 py-2 border-none outline-none
           transition-all duration-300
           
         "
@@ -53,7 +52,7 @@ export default function ThemeSelector() {
           aria-label="Select theme"
           className="
             cursor-pointer appearance-none
-            bg-transparent dark:bg-slate-900 pr-5
+            bg-transparent dark:bg-slate-900 pr-5 pl-2
             text-sm font-medium
             text-foreground
             outline-none
@@ -66,7 +65,7 @@ export default function ThemeSelector() {
 
         <ChevronDown
           className="
-            pointer-events-none absolute right-3
+            pointer-events-none absolute right-6
             h-4 w-4 text-muted-foreground
             transition-transform duration-300
             group-hover:translate-y-0.5

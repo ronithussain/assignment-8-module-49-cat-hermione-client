@@ -164,7 +164,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <ThemeSelector />
           </nav>
-          <div className="flex border-l-4 pl-2 rounded-bl-2xl rounded-tl-2xl border-[#0a835a] ml-2 shrink-0 items-center justify-end gap-0 ">
+          <div className="flex  shrink-0 items-center justify-end gap-0 ">
             {isPending ? (
               <div className="flex items-center gap-3">
                 <div className="size-9 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
@@ -247,20 +247,20 @@ export default function Navbar() {
               </>
             ) : (
               /* Logged-out User */
-              <div className="flex items-center justify-end gap-3">
+              <div className="">
                 <Link
                   href="/login"
-                  className="whitespace-nowrap text-sm font-medium text-[#171717] dark:text-gray-200 transition-colors hover:text-[#15A1BF] dark:hover:text-emerald-400"
+                  className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
                 >
                   Login
                 </Link>
 
-                <Link
+                {/* <Link
                   href="/signup"
                   className="whitespace-nowrap rounded-md bg-[#009966] px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1189a3]"
                 >
                   Sign Up
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>
